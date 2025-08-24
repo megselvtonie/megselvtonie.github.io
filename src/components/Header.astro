@@ -1,0 +1,17 @@
+---
+/**
+ * Lager et tidsstempel for når siden ble bygget.
+ */
+const now = new Date();
+
+/** Sørger for at tall alltid har to siffer, f.eks. 09 i stedet for 9 */
+const pad = (n: number) => String(n).padStart(2, "0");
+
+const dato = `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()}`;
+const tid  = `${pad(now.getHours())}.${pad(now.getMinutes())}`;
+---
+
+<header style="text-align:center; font-family: Arial, sans-serif; font-size: 14px; color: #555; padding: 10px 0; border-bottom: 1px solid #ddd;">
+  <h1>Min nettside</h1>
+  <p>Sist lagret: {dato} kl. {tid}</p>
+</header>

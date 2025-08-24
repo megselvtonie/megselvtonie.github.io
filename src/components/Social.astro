@@ -1,0 +1,24 @@
+---
+/**
+ * Dette er en komponent (const) og tar imot props fra forelderen
+ * Props = data du sender inn når du bruker komponenten i footer.astr.
+ * 
+ * Da blir:
+ *   platform = "letterboxd"
+ *   username = "megselvtonie"
+ * som sendes inn fra footer.astro
+ */
+const { platform, username } = Astro.props;
+---
+
+<!-- Vi bruker props til å bygge en dynamisk lenke kobler den til fotter som mater prosene i {} -->
+<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+
+<style>
+  a {
+    padding: 0.5rem 1rem;
+
+    /*background-color: #4c1d95;*/
+    text-decoration: none;
+  }
+</style>
