@@ -1,5 +1,17 @@
 ---
+//const pagetitle er javascript, pagetitle settes i {} og plasseres i head for å forklare fane-navnet på nettsiden
+const pagetitle = "megselvtonie";
 
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Tonie",
+  country: "Canada",
+  occupation: "UX designer",
+  hobbies: ["brettspillnerd", "boksamler", "filmentusiast"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "den gode samtalen", "prosjektledelse", "merkevarebygging", "matelsker", "brukergrensesnittdesign"];
 ---
 
 <html lang="en">
@@ -8,13 +20,14 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>megselvtonie</title>
+		<title>{pagetitle}</title>
 	</head>
 	<body>
 	<!--Dette er navigasjonen -->
 		<a href="/">Forside</a>
 		<a href="/about/">Om meg </a>
 		<a href="/blog/">Heia bloggen &lt;3</a>
+		<!-- <a href="/blog/">Heia bloggen &lt;3</a> legg denne til når jeg er ferdig-->
 		<!--Dette er slutten på navigasjonen -->
 		<!-- Dette er hovedinnholdet på forsiden -->
 		<!-- Dette er en kommentar i HTML -->
@@ -43,5 +56,22 @@
 		<p>Takk for at du besøker siden min!</p>
 		<p>Ha en fin dag!</p>
 		<p>Hilsen, megselvtonie</p>	
+
+		<p>Here are a few facts about me:</p>
+<ul>
+  <li>My name is {identity.firstName}.</li>
+  <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+   {identity.hobbies.length >= 2 &&
+    <li>Two of my hobbies are:
+		{identity.hobbies[0]},
+		{identity.hobbies[1]} og
+		{identity.hobbies[2]}
+	</li>
+  }
+</ul>
+<p>My skills are:</p>
+<ul>
+  {skills.map((skill) => <li>{skill}</li>)}
+</ul>
 	</body>
 </html>
