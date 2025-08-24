@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Navigation from '../components/navigation.astro';
+
 //const pagetitle er javascript, pagetitle settes i {} og plasseres i head for å forklare fane-navnet på nettsiden
 const pagetitle = "megselvtonie";
 
@@ -18,45 +20,44 @@ const skills = ["HTML", "CSS", "JavaScript", "den gode samtalen", "prosjektledel
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/rosahjerte.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pagetitle}</title>
 	</head>
 	<body>
 	<!--Dette er navigasjonen -->
-		<a href="/">Forside</a>
-		<a href="/about/">Om meg </a>
-		<a href="/blog/">Heia bloggen &lt;3</a>
+		<Navigation />
 		<!-- <a href="/blog/">Heia bloggen &lt;3</a> legg denne til når jeg er ferdig-->
 		<!--Dette er slutten på navigasjonen -->
 		<!-- Dette er hovedinnholdet på forsiden -->
 		<!-- Dette er en kommentar i HTML -->
 		<h1>Velkommen til min n00b nettside. dato 23. august 23.48</h1>
-		<p>Dette er min første nettside laget med Astro og dette er en blogg.</p>
-		<p>Jeg heter Tonie og er 32 år gammel</p>
-		<p>Jeg er born i China, raised in innerste Trøndelag og bor i Mo i Rana</p>
-		<p>Jeg liker å spille brettspill, lese comics og være med venner</p>
-		<p>Jeg har laget denne nettsiden for å lære mer om webutvikling, selvutvikling på nett</p>
-		<p>Jeg har brukt Astro som rammeverk for å lage nettsiden min</p>
-		<p>Jeg har brukt Node.js som kjøretidsmiljø for å kjøre Astro</p>
-		<p>Jeg har brukt npm som pakkebehandler for å installere Astro</p>
-		<p>Jeg har også brukt Visual Studio Code som teksteditor</p>
-		<p>Jeg har brukt GitHub for å lagre koden min</p>
-		<p>Jeg har brukt GitHub Copilot for å få hjelp med koden min</p>
-		<p>Jeg har brukt noen royalty free (gratis og lisensfrie) bilder fra overalt for å pynte på siden min</p>
-		<p>Jeg har brukt noen gratis (lisensfrie) ikoner fra overalt for å pynte på siden min</p>
-		<p>Jeg har brukt noen gratis fonter fra Google Fonts for å pynte på siden min</p>
-		<p>Jeg har brukt litt CSS for å style siden min</p>
-		<p>Jeg har brukt litt HTML for å lage strukturen på siden min</p>
-		<p>Jeg har brukt litt JavaScript for å lage litt interaktivitet på siden min</p>
-		<p>Jeg har brukt litt Markdown for å skrive innholdet på siden min</p>	
-		<p>Jeg er en n00b på utvikling, så vær snill med meg!</p>
-		<p>Jeg håper å lære mye og bli flinkere</p>
-		<p>Følg meg på sosiale medier instagram <a href="https://www.instagram.com/megselvtonie/"> @megselvtonie</a> for å se mitt liv</p>
-		<p>Takk for at du besøker siden min!</p>
-		<p>Ha en fin dag!</p>
-		<p>Hilsen, megselvtonie</p>	
+		<p>Dette er min første nettside laget med Astro og dette er en blogg.<br />
+			Jeg heter Tonie og er 32 år gammel<br />
+			Jeg er born i China, raised in innerste Trøndelag og bor i Mo i Rana<br />
+			Jeg liker å spille brettspill, lese comics og være med venner<br />
+			Jeg har laget denne nettsiden for å lære mer om webutvikling, selvutvikling på nett<br />
+			Jeg har brukt Astro som rammeverk for å lage nettsiden min<br />
+			Jeg har brukt Node.js som kjøretidsmiljø for å kjøre Astro<br />
+			Jeg har brukt npm som pakkebehandler for å installere Astro<br />
+			Jeg har også brukt Visual Studio Code som teksteditor<br />
+			Jeg har brukt GitHub for å lagre koden min<br />
+			Jeg har brukt GitHub Copilot for å få hjelp med koden min<br />
+			Jeg har brukt noen royalty free (gratis og lisensfrie) bilder fra overalt for å pynte på siden min<br />
+			Jeg har brukt noen gratis (lisensfrie) ikoner fra overalt for å pynte på siden min<br />
+			Jeg har brukt noen gratis fonter fra Google Fonts for å pynte på siden min<br />
+			Jeg har brukt litt CSS for å style siden min<br />
+			Jeg har brukt litt HTML for å lage strukturen på siden min<br />
+			Jeg har brukt litt JavaScript for å lage litt interaktivitet på siden min<br />
+			Jeg har brukt litt Markdown for å skrive innholdet på siden min<br />
+			Jeg er en n00b på utvikling, så vær snill med meg!<br />
+			Jeg håper å lære mye og bli flinkere<br />
+			Følg meg på sosiale medier instagram <a href="https://www.instagram.com/megselvtonie/">@megselvtonie</a> for å se mitt liv<br />
+			Takk for at du besøker siden min!<br />
+			Ha en fin dag!<br />
+			Hilsen, megselvtonie
+		</p>
 
 		<p>Here are a few facts about me:</p>
 <ul>

@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import Navigation from '../components/navigation.astro';
+
+const pageTitle = "vb blogg %lt;3";
 ---
 
 <html lang="en">
@@ -8,12 +11,10 @@ import '../styles/global.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Meg</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-       	<a href="/">Forside</a>
-		<a href="/about/">Om meg </a>
-		<a href="/blog/">Heia bloggen &lt;3</a>
+       	<Navigation />
 
 
    <h1>Heia bloggen! </h1>
