@@ -1,0 +1,48 @@
+---
+---
+<div id="page-weight" aria-live="polite">Måler sidevekt…</div>
+
+<script>
+  // Vi kjører i nettleseren
+  (function () {
+    const el = document.getElementById("page-weight")!;
+    const kb = (bytes: number) => Math.max(1, Math.round(bytes / 1024));
+
+    function compute() {
+      let totalBytes = 0;
+      let htmlBytes = 0;
+
+      // Narrow til PerformanceNavigationTiming
+      const nav = performance.getEntriesByType("navigation")[0] as
+        PerformanceNavigationTiming | undefined;
+
+      if (nav) {
+        const n = (nav.encodedBodySize ?? nav.transferSize ?? 0);
+        htmlBytes = n;
+        totalBytes += n;
+      }
+
+      // Narrow til PerformanceResourceTiming[]
+      const resources = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
+      for (const r of resources) {
+        totalBytes += (r.encodedBodySize ?? r.transferSize ?? 0);
+      }
+
+      el.textContent = `Data brukt for å laste denne siden[under arbeid]: ${kb(totalBytes)} KB (Selve nettsiden er: ${kb(htmlBytes)} KB)`;
+    }
+
+    window.addEventListener("load", () => {
+      compute();
+
+      // Oppdater hvis nye ressurser lastes inn etterpå (lazy)
+      if ("PerformanceObserver" in window) {
+        const po = new PerformanceObserver(() => compute());
+        try {
+          po.observe({ type: "resource", buffered: true });
+          // Noen nettlesere feiler hvis 'navigation' ikke støttes – derfor try/catch
+          po.observe({ type: "navigation", buffered: true } as any);
+        } catch { /* ignorer */ }
+      }
+    });
+  })();
+</script>
