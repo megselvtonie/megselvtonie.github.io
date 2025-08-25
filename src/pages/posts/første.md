@@ -1,13 +1,14 @@
 ---
-title: 'Mitt første blogginnlegg'
+title: "Mitt første blogginnlegg"
 pubDate: 2022-07-01
-description: 'Dette er det første innlegget på min nye Astro-blogg.'
-author: 'Astro-lærling'
+description: "Dette er det første innlegget på min nye Astro-blogg."
+author: "Astro-lærling"
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'Astro-logoen på en mørk bakgrunn med en rosa glød.'
+  url: "https://docs.astro.build/assets/rose.webp"
+  alt: "Astro-logoen på en mørk bakgrunn med en rosa glød."
 tags: ["astro", "blogg", "lære i offentlighet"]
 ---
+
 ## Mitt første blogginnlegg
 
 Publisert: 2022-07-01

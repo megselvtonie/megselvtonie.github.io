@@ -1,6 +1,6 @@
 html {
-background-color: #fff5d1;
-/*  background-color: rgb(220 220 220);*/
+  background-color: #fff5d1;
+  /*  background-color: rgb(220 220 220);*/
   text-decoration: black;
   font-family: Helvetica, Arial, sans-serif;
 }
@@ -18,16 +18,16 @@ body {
 }
 
 h1 {
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-   /*
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  /*
    color: #5a008c; GRÅ
    color: #162dab; BLÅ
    color: d11305; RØD
    color: #006951; GRØNN
     color: rgb(220 220 220); HVIT
    */
-    color: #d11305;
+  color: #d11305;
   margin: 1rem 0;
   font-size: 2.5rem;
 }
