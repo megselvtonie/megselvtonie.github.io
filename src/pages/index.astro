@@ -1,42 +1,11 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import PageWeight from "../components/PageWeight.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-import '../styles/global.css';
-
-//const pagetitle er javascript, pagetitle settes i {} og plasseres i head for å forklare fane-navnet på nettsiden
-const pagetitle = "megselvtonie";
-
-const pageTitle = "About Me";
-
-const identity = {
-  firstName: "Tonie",
-  country: "Canada",
-  occupation: "UX designer",
-  hobbies: ["brettspillnerd", "boksamler", "filmentusiast"],
-};
-
-const skills = ["HTML", "CSS", "JavaScript", "den gode samtalen", "prosjektledelse", "merkevarebygging", "matelsker", "brukergrensesnittdesign"];
+const pageTitle = "megselvtonie";
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/rosahjerte.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pagetitle}</title>
-	</head>
-	<body>
-	<!--Dette er navigasjonen -->
-		<Navigation />
-		<!-- <a href="/blog/">Heia bloggen &lt;3</a> legg denne til når jeg er ferdig-->
-		<!--Dette er slutten på navigasjonen -->
-		<!-- Dette er hovedinnholdet på forsiden -->
-		<!-- Dette er en kommentar i HTML -->
-		<PageWeight />
-		<h1>Velkommen til min n00b nettside. dato 23. august 23.48</h1>
+<BaseLayout pageTitle={pageTitle}>
+	
+<h1>Velkommen til min n00b nettside. dato 23. august 23.48</h1>
 		<p>Dette er min første nettside laget med Astro og dette er en blogg.<br />
 			Jeg heter Tonie og er 32 år gammel<br />
 			Jeg er born i China, raised in innerste Trøndelag og bor i Mo i Rana<br />
@@ -62,26 +31,4 @@ const skills = ["HTML", "CSS", "JavaScript", "den gode samtalen", "prosjektledel
 			Ha en fin dag!<br />
 			Hilsen, megselvtonie
 		</p>
-
-		<p>Here are a few facts about me:</p>
-<ul>
-  <li>My name is {identity.firstName}.</li>
-  <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
-   {identity.hobbies.length >= 2 &&
-    <li>Two of my hobbies are:
-		{identity.hobbies[0]},
-		{identity.hobbies[1]} og
-		{identity.hobbies[2]}
-	</li>
-  }
-</ul>
-<p>My skills are:</p>
-<ul>
-  {skills.map((skill) => <li>{skill}</li>)}
-</ul>
-
-		<!-- Dette er slutten på hovedinnholdet på forsiden -->
-		<!-- Dette er footeren min -->		
- <p>Dette er footeren min</p> <Footer/>
-	</body>
-</html>
+</BaseLayout>

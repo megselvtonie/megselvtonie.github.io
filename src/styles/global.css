@@ -35,3 +35,10 @@ h1 {
 a:hover {
   color: #d11305;
 }
+
+/* nav styles */
+.nav-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
