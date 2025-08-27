@@ -10,7 +10,7 @@ html {
 body {
   margin: 0 auto;
   width: 100%;
-  max-width: 80ch;     /* container */
+  max-width: 80ch; /* container */
   padding: 1rem;
   line-height: 1.5;
 }
@@ -25,7 +25,7 @@ h1 {
   font-family: "Times", "Times New Roman", serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(2rem, 2.5rem, 2.5rem); 
+  font-size: clamp(2rem, 2.5rem, 2.5rem);
   /* 32px (mobil) → 45px (tablet) → 50px (desktop) */
   line-height: 1.1em;
   color: #d11305;
@@ -53,7 +53,6 @@ h3 {
   color: #000;
   margin: 0.5rem 0;
 }
-
 
 /* Lenker */
 a:hover {
