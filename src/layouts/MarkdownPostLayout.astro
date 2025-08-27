@@ -1,0 +1,8 @@
+---
+const { frontmatter } = Astro.props;
+import '../styles/global.css';
+---
+<meta charset="utf-8" />
+<h1>{frontmatter.title}</h1>
+<p>Skrevet av {frontmatter.author}</p>
+<slot />

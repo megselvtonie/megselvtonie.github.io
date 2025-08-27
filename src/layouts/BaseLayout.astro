@@ -24,6 +24,41 @@ const { pageTitle } = Astro.props;
             <slot />
 	    </main>
  <p>Dette er footeren min</p> <Footer/>
+
+
+<script is:inline>
+  // Finn alle lenker som starter med "http"
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    // Legg til at de skal åpnes i ny fane
+    link.setAttribute('target', '_blank');
+    // Legg til sikkerhet så den nye fanen ikke kan manipulere din side
+    link.setAttribute('rel', 'noopener noreferrer');
+  });
+</script>
+
+<script is:inline>
+  // Finn alle lenker med en href
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href') || '';
+
+    // Hopp over e-post og telefonlenker
+    if (href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+    // Lag en URL-objekt for å kunne sjekke domenet
+    const url = new URL(href, location.href);
+
+    // Hvis lenken er http/https og går til et annet domene enn ditt eget
+    if (url.protocol.startsWith('http') && url.host !== location.host) {
+      // Åpne i ny fane
+      link.target = '_blank';
+      // Legg til sikkerhet (beskytter mot window.opener-angrep)
+      link.rel = 'noopener noreferrer';
+    }
+  });
+</script>
+
+
+
 	</body>
 </html>
 

@@ -1,14 +1,16 @@
+/* ===== Base ===== */
 html {
   background-color: #fff5d1;
-  /*  background-color: rgb(220 220 220);*/
-  text-decoration: black;
-  font-family: Helvetica, Arial, sans-serif;
+  /* Global font og mobil-basestørrelse (1rem = 16px) */
+  font-family: "Times", "Times New Roman", serif;
+  font-size: 100%;
+  color: #000;
 }
 
 body {
   margin: 0 auto;
   width: 100%;
-  max-width: 80ch;
+  max-width: 80ch;     /* container */
   padding: 1rem;
   line-height: 1.5;
 }
@@ -17,28 +19,65 @@ body {
   box-sizing: border-box;
 }
 
+/* ===== Typografi ===== */
+/* H1 – maks 50px */
 h1 {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Times", "Times New Roman", serif;
   font-style: italic;
-  /*
-   color: #5a008c; GRÅ
-   color: #162dab; BLÅ
-   color: d11305; RØD
-   color: #006951; GRØNN
-    color: rgb(220 220 220); HVIT
-   */
+  font-weight: 400;
+  font-size: clamp(2rem, 2.5rem, 2.5rem); 
+  /* 32px (mobil) → 45px (tablet) → 50px (desktop) */
+  line-height: 1.1em;
   color: #d11305;
   margin: 1rem 0;
-  font-size: 2.5rem;
 }
 
+/* H2 – maks 36px */
+h2 {
+  font-family: "Times", "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.8rem, 1.8rem);
+  /* 24px (mobil) → 32px (tablet) → 36px (desktop) */
+  line-height: 1.2em;
+  color: #000;
+  margin: 0.75rem 0;
+}
+
+/* H3 – maks 28px */
+h3 {
+  font-family: "Times", "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 1.4rem, 1.4rem);
+  /* 19.2px (mobil) → 25px (tablet) → 28px (desktop) */
+  line-height: 1.3em;
+  color: #000;
+  margin: 0.5rem 0;
+}
+
+
+/* Lenker */
 a:hover {
   color: #d11305;
 }
 
-/* nav styles */
+/* ===== Nav ===== */
 .nav-links {
   margin-top: 1rem;
   display: flex;
   gap: 1rem;
+}
+
+/* ===== Responsive type scale ===== */
+/* Tablet / mellomskjerm: 18px */
+@media (min-width: 768px) {
+  html {
+    font-size: 112.5%; /* 18px */
+  }
+}
+
+/* Desktop: 20px */
+@media (min-width: 1024px) {
+  html {
+    font-size: 125%; /* 20px */
+  }
 }
