@@ -62,15 +62,7 @@ a:hover {
 /* Grunnstil: desktop default (synlig liste, skjult hamburger) */
 .hamburger {
   display: none; /* vises på mobil */
-  padding-right: 20px;
   cursor: pointer;
-}
-.hamburger .line {
-  display: block;
-  width: 20px;
-  height: 2px;
-  margin-bottom: 5px;
-  background-color: black;
 }
 
 /* Bruk .nav-links på <ul id="menu-list" class="nav-links"> */

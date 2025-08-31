@@ -1,8 +1,10 @@
 ---
+/* ActiveLink.astro hvordan aktiv link ser ut*/
 const { href, text } = Astro.props;
 const { pathname } = Astro.url;
 const isActive = pathname === href || pathname.startsWith(href + "/");
 ---
+
 <a href={href} class={isActive ? "nav-active" : ""}>{text}</a>
 
 <style>
