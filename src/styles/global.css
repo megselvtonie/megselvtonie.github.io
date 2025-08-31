@@ -1,7 +1,6 @@
 /* ===== Base ===== */
 html {
   background-color: #fff5d1;
-  /* Global font og mobil-basestørrelse (1rem = 16px) */
   font-family: "Times", "Times New Roman", serif;
   font-size: 100%;
   color: #000;
@@ -10,7 +9,7 @@ html {
 body {
   margin: 0 auto;
   width: 100%;
-  max-width: 80ch; /* container */
+  max-width: 70ch; /* smalere kolonne */
   padding: 1rem;
   line-height: 1.5;
 }
@@ -20,63 +19,104 @@ body {
 }
 
 /* ===== Typografi ===== */
-/* H1 – maks 50px */
 h1 {
   font-family: "Times", "Times New Roman", serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
-  font-size: clamp(2rem, 2.5rem, 2.5rem);
-  /* 32px (mobil) → 45px (tablet) → 50px (desktop) */
-  line-height: 1.1em;
+  font-size: clamp(1.8rem, 4vw, 2.4rem); /* ~28 → 38px */
+  line-height: 1.2;
   color: #d11305;
   margin: 1rem 0;
 }
 
-/* H2 – maks 36px */
 h2 {
   font-family: "Times", "Times New Roman", serif;
   font-weight: 400;
-  font-size: clamp(1.5rem, 1.8rem, 1.8rem);
-  /* 24px (mobil) → 32px (tablet) → 36px (desktop) */
-  line-height: 1.2em;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* ~19 → 24px */
+  line-height: 1.3;
   color: #000;
   margin: 0.75rem 0;
 }
 
-/* H3 – maks 28px */
 h3 {
   font-family: "Times", "Times New Roman", serif;
   font-weight: 400;
-  font-size: clamp(1.2rem, 1.4rem, 1.4rem);
-  /* 19.2px (mobil) → 25px (tablet) → 28px (desktop) */
-  line-height: 1.3em;
+  font-size: clamp(1rem, 2vw, 1.25rem); /* ~16 → 20px */
+  line-height: 1.4;
   color: #000;
   margin: 0.5rem 0;
 }
 
-/* Lenker */
+/* ===== Lenker ===== */
+a {
+  color: rgb(80 80 80);
+  text-decoration: none;
+}
 a:hover {
   color: #d11305;
+  transition: color 0.2s ease;
+  text-decoration: none;
 }
 
-/* ===== Nav ===== */
+/* ===== Nav / Hamburger ===== */
+/* Grunnstil: desktop default (synlig liste, skjult hamburger) */
+.hamburger {
+  display: none; /* vises på mobil */
+  padding-right: 20px;
+  cursor: pointer;
+}
+.hamburger .line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin-bottom: 5px;
+  background-color: black;
+}
+
+/* Bruk .nav-links på <ul id="menu-list" class="nav-links"> */
 .nav-links {
-  margin-top: 1rem;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 1rem 0;
 }
 
-/* ===== Responsive type scale ===== */
-/* Tablet / mellomskjerm: 18px */
+/* Aktiv lenke kan styles lokalt i Navigation.astro, men behold denne hvis ønskelig */
+.nav-links a.nav-active {
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+}
+
+/* ===== Responsivt ===== */
+/* Mobil og små skjermer: skjul lista, vis når .expanded */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  .nav-links {
+    display: none; /* skjules som default */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .nav-links.expanded {
+    display: flex; /* vises når scriptet toggler .expanded */
+  }
+}
+
+/* Typografi-skala */
 @media (min-width: 768px) {
   html {
-    font-size: 112.5%; /* 18px */
-  }
+    font-size: 112.5%;
+  } /* 18px base */
 }
-
-/* Desktop: 20px */
 @media (min-width: 1024px) {
   html {
-    font-size: 125%; /* 20px */
-  }
+    font-size: 125%;
+  } /* 20px base */
 }
+/* ===== Footer ===== */

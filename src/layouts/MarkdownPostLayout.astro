@@ -1,8 +1,56 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+
 const { frontmatter } = Astro.props;
-import '../styles/global.css';
+
+const d = frontmatter.pubDate instanceof Date
+  ? frontmatter.pubDate
+  : new Date(frontmatter.pubDate);
+
+const dateStr = d.toLocaleDateString("no-NO", {
+  weekday: "long",
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+});
 ---
-<meta charset="utf-8" />
-<h1>{frontmatter.title}</h1>
-<p>Skrevet av {frontmatter.author}</p>
-<slot />
+<BaseLayout pageTitle={frontmatter.title}>
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">{frontmatter.title}</h1>
+      {frontmatter.description && <p class="post-dek">{frontmatter.description}</p>}
+      <p class="post-meta">
+        {dateStr}
+        {frontmatter.author && <> &nbsp;•&nbsp; Skrevet av {frontmatter.author}</>}
+      </p>
+    </header>
+
+    {frontmatter.image?.url && (
+      <figure class="post-hero">
+        <img src={frontmatter.image.url} alt={frontmatter.image.alt ?? ''} loading="lazy" />
+        {frontmatter.image.alt && <figcaption>{frontmatter.image.alt}</figcaption>}
+      </figure>
+    )}
+
+    <main class="post-body">
+      <slot />
+    </main>
+  </article>
+</BaseLayout>
+
+<style>
+  /* --- CSS som du hadde --- */
+  .post { padding-top: 1.5rem; max-width: 70ch; margin: 0 auto; }
+  .post-title { font-family: "Times", serif; font-weight: 400; line-height: 1.1;
+    font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.75rem; }
+  .post-dek { font-family: "Times", serif; font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.35; margin: 0 0 1rem; color: #222; }
+  .post-meta { font-family: Georgia, serif; font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+    color: #444; margin: 0 0 2rem; }
+  .post-hero { margin: 0 0 1.5rem; }
+  .post-hero img { max-width: 100%; height: auto; display: block; }
+  .post-hero figcaption { font-size: 0.85rem; color: #555; margin-top: 0.25rem; }
+  .post-body { font-size: clamp(1rem, 1.1vw, 1.125rem); line-height: 1.55; color: #111; }
+  .post-body a { text-decoration: underline; }
+</style>

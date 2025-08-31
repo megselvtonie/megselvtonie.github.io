@@ -2,47 +2,68 @@
 ---
 <div id="page-weight" aria-live="polite">Måler sidevekt…</div>
 
-<script>
-  // Vi kjører i nettleseren
-  (function () {
-    const el = document.getElementById("page-weight")!;
-    const kb = (bytes: number) => Math.max(1, Math.round(bytes / 1024));
+<script is:inline>
+// @ts-nocheck  — hold dette skriptet i ren JS for å unngå TS-støy i inline-script
+(() => {
+  const el = document.getElementById('page-weight');
+  if (!el) return;
 
-    function compute() {
-      let totalBytes = 0;
-      let htmlBytes = 0;
+  const toKB = (b) => Math.max(0, Math.round(b / 1024));
 
-      // Narrow til PerformanceNavigationTiming
-      const nav = performance.getEntriesByType("navigation")[0] as
-        PerformanceNavigationTiming | undefined;
+  // Hent “beste” tilgjengelige størrelse for en entry.
+  // Prioritet: encodedBodySize (komprimert) → transferSize (inkl. headere; 0 ved cache) → decodedBodySize (ukomprimert).
+  const sizeOf = (entry) => {
+    if (!entry) return 0;
+    const a = (typeof entry.encodedBodySize === 'number' && entry.encodedBodySize > 0) ? entry.encodedBodySize : 0;
+    const b = (typeof entry.transferSize    === 'number' && entry.transferSize    > 0) ? entry.transferSize    : 0;
+    const c = (typeof entry.decodedBodySize === 'number' && entry.decodedBodySize > 0) ? entry.decodedBodySize : 0;
+    return a || b || c || 0;
+  };
 
-      if (nav) {
-        const n = (nav.encodedBodySize ?? nav.transferSize ?? 0);
-        htmlBytes = n;
-        totalBytes += n;
-      }
+  function compute() {
+    let htmlBytes = 0;
+    let totalBytes = 0;
 
-      // Narrow til PerformanceResourceTiming[]
-      const resources = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
-      for (const r of resources) {
-        totalBytes += (r.encodedBodySize ?? r.transferSize ?? 0);
-      }
-
-      el.textContent = `Data brukt for å laste denne siden[under arbeid]: ${kb(totalBytes)} KB (Selve nettsiden er: ${kb(htmlBytes)} KB)`;
+    // HTML-dokumentet (navigation entry)
+    const nav = performance.getEntriesByType('navigation')[0];
+    if (nav) {
+      const n = sizeOf(nav);
+      htmlBytes = n;
+      totalBytes += n;
     }
 
-    window.addEventListener("load", () => {
-      compute();
+    // Øvrige ressurser (CSS, JS, bilder, fonter, osv.)
+    const res = performance.getEntriesByType('resource');
+    for (const r of res) totalBytes += sizeOf(r);
 
-      // Oppdater hvis nye ressurser lastes inn etterpå (lazy)
-      if ("PerformanceObserver" in window) {
-        const po = new PerformanceObserver(() => compute());
-        try {
-          po.observe({ type: "resource", buffered: true });
-          // Noen nettlesere feiler hvis 'navigation' ikke støttes – derfor try/catch
-          po.observe({ type: "navigation", buffered: true } as any);
-        } catch { /* ignorer */ }
-      }
-    });
-  })();
+    const files = (nav ? 1 : 0) + res.length;
+
+    el.textContent =
+      `Sidevekt: ${toKB(totalBytes)} KB ` +
+      `(HTML: ${toKB(htmlBytes)} KB) • Filer: ${files}`;
+  }
+
+  // Første måling
+  if (document.readyState === 'complete') compute();
+  else addEventListener('load', compute);
+
+  // Oppdater når nye/lazy ressurser dukker opp
+  if ('PerformanceObserver' in window) {
+    try {
+      const po = new PerformanceObserver(() => compute());
+      po.observe({ type: 'resource', buffered: true });
+      po.observe({ type: 'navigation', buffered: true });
+    } catch {
+      /* noen nettlesere støtter ikke alle typene – try/catch er ok */
+    }
+  }
+})();
 </script>
+
+<style>
+  #page-weight {
+    margin-top: 1rem;
+    font: 12px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: red;
+  }
+</style>

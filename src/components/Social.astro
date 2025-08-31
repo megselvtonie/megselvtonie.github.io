@@ -8,17 +8,13 @@
  *   username = "megselvtonie"
  * som sendes inn fra footer.astro
  */
-const { platform, username } = Astro.props;
+const { platform, username, compact = false, class: className = "" } = Astro.props;
 ---
-
-<!-- Vi bruker props til å bygge en dynamisk lenke kobler den til fotter som mater prosene i {} -->
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+<a class={`${compact ? "compact" : ""} ${className}`} href={`https://www.${platform}.com/${username}`}>
+  {platform}
+</a>
 
 <style>
-  a {
-    padding: 0.5rem 1rem;
-
-    /*background-color: #4c1d95;*/
-    text-decoration: none;
-  }
+  a { padding: 0.5rem 1rem; text-decoration: none; }
+  a.compact { padding: 0; } /* kompakt variant for footer */
 </style>

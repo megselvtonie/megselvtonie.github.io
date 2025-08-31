@@ -1,7 +1,74 @@
 ---
+import ActiveLink from './ActiveLink.astro';
 ---
-<div class="nav-links">
-<a href="/">Fremside</a>
-<a href="/about/">Om meg</a>
-<a href="/blog/">Heia bloggen &lt;3</a>
-</div>
+
+<nav id="menu">
+  <!-- Hamburgermeny-knapp -->
+
+  <ul id="menu-list" class="nav-links">
+    <li>
+      <ActiveLink href="/about" text="Om meg" />
+      <span class="separator">|</span>
+    </li>
+    <li>
+      <ActiveLink href="/blog" text="Heia bloggen &lt;3" />
+      <span class="separator">|</span>
+    </li>
+    <li>
+      <ActiveLink href="/projects" text="Prosjekter (kommer)" />
+      <span class="separator">|</span>
+    </li>
+    <li>
+      <ActiveLink href="/contact" text="Kontakt meg (TBA)" />
+    </li>
+  </ul>
+  
+</nav>
+
+<style>
+  .separator {
+    margin: 0 0.25rem; /* lite mellomrom til venstre og høyre */
+  }
+
+  .nav-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links a.nav-active {
+    font-weight: bold; /* fet skrift på aktiv side */
+    border-bottom: 2px solid currentColor;
+  }
+
+  /* === Mobil: skjul lista, vis når expanded === */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;         /* skjules som default */
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .nav-links.expanded {
+      display: flex;         /* vises når .expanded toggles av hamburgeren */
+    }
+
+     .separator {
+    display: none; /* skjul separator på mobil */
+  }
+  }
+
+  /* === Desktop: vis alltid, skjul hamburger-knappen === */
+  @media (min-width: 769px) {
+    .nav-links {
+      display: flex;
+      flex-direction: row; /* alltid synlig på desktop */
+      gap: 0.2rem;
+  }
+}
+</style>
+
+
+

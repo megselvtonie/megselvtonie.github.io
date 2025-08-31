@@ -1,11 +1,62 @@
 ---
+import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
 ---
-<header>
-  
-<nav>
-<Navigation />
+
+<header class="site-header">
+  <h1 class="site-title">
+    <a href="/" id="top">MEGSELV→TONIE</a>
+  </h1>
+
+  <div class="subtitle">
+    <a href="/about">Dette er min personlige nettside ✦</a>
+  </div>
+  <img src="rosahjerte.png" alt="Logo" width="50" height="50" style="float:right; margin-top: -3.5rem;"/>
+  <!-- Hamburger-meny for mobil -->
+<Hamburger />
+
+  <nav class="main-nav">
+    
+    <Navigation />
 
   </nav>
-
 </header>
+
+<style>
+  .site-header {
+    width: 100vw; /* full bredde */
+    margin-left: calc(-50vw + 50%);
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .main-nav {
+    border-bottom: 2px solid black;
+    padding-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-title {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .site-title a,
+  .subtitle a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .site-title a:hover,
+  .subtitle a:hover {
+    color: #d11305; /* accentfargen */
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+</style>
+
+

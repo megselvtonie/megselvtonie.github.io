@@ -1,60 +1,78 @@
 ---
 import Social from '../components/Social.astro';
-import PageWeight from "../components/PageWeight.astro";
 ---
 
-<footer>
-<p>megselvtonie © 2025</p>
+<footer class="footer">
+  <div class="left">Dette er footeren min:
+    <span class="item">megselvtonie © 2025<br/>
+   
+    </span></div>
 
-<style>
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-   /* background: #fff5d1; /* lys grå, typisk gammelt web-utseende */
-    border-top: 1px solid #ffe792cf;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    color: #000;
-    padding: 2px 0;
-  }
+  <nav class="right">
+    
+    <Social platform="letterboxd" username="megselvtonie" compact class="item" />
+    <Social platform="instagram"  username="megselvtonie" compact class="item" />
+    <Social platform="github"     username="megselvtonie" compact class="item" />
+    <p>toniefiskvik [at] gmail [dot] com</p>
+    <a href="#top" class="item back-to-top">↑ Til toppen</a>
+  </nav>
 
-  footer a {
-    color: #000080; /* klassisk blå lenkefarge */
-    text-decoration: underline;
-  }
+  <style>
+    .footer {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.7rem;
+      color: #000;
+      padding: 6px 0;
+      border-top: 0.5rem solid #000;
 
-  footer a:hover {
-    color: #000;
-    background: #e0e0e0;
-  }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      /* Viktig: ikke la desktop “wrappe” før breakpoint */
+      white-space: nowrap;
+    }
 
-  .back-to-top {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    padding: 4px 8px;
-    font-size: 12px;
-    font-family: Arial, sans-serif;
-    color: #000080; /* klassisk "link-blå" */
-    text-decoration: underline;
-    background: #f5f5f5;
-    border: 1px solid #ccc;
-  }
+    .left { text-align: left; }
 
-  .back-to-top:hover {
-    background: #e0e0e0;
-    color: #000;
-  }
-</style>
+    .right {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex-wrap: nowrap;   /* ← tving én linje på desktop */
+    }
 
-<a href="#" class="back-to-top">Ta meg til toppen av siden</a>
+    .item { display: inline-block; }
 
- <!-- Her sender vi props til Social -->
-  <Social platform="letterboxd" username="megselvtonie" />
-  <Social platform="instagram" username="megselvtonie" />
-  <Social platform="github" username="megselvtonie?" />
+    .footer a {
+      color: #000;
+      text-decoration: none;
+    }
+    .footer a:hover { text-decoration: underline; }
 
+    /* MOBIL: bytt helt til stående layout */
+    @media (max-width: 600px) {
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        white-space: normal;   /* tillat linjebrudd i kolonne */
+      }
+
+      .right {
+        flex-direction: column;   /* ett element per linje */
+        align-items: flex-start;  /* venstrestilt */
+        gap: .25rem;
+        width: 100%;
+      }
+
+      /* Flytt "Til toppen" øverst i den høyre kolonnen */
+      .back-to-top {
+        order: -1;
+        margin-bottom: .25rem;
+      }
+    }
+  </style>
 </footer>
