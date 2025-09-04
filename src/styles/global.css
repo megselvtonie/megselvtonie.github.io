@@ -56,6 +56,7 @@ a:hover {
   color: #d11305;
   transition: color 0.2s ease;
   text-decoration: none;
+  cursor: pointer;
 }
 
 /* ===== Nav / Hamburger ===== */
@@ -63,6 +64,10 @@ a:hover {
 .hamburger {
   display: none; /* vises på mobil */
   cursor: pointer;
+}
+
+.menu-text {
+  display: none; /* skjul på desktop som standard */
 }
 
 /* Bruk .nav-links på <ul id="menu-list" class="nav-links"> */
@@ -97,6 +102,18 @@ a:hover {
   }
   .nav-links.expanded {
     display: flex; /* vises når scriptet toggler .expanded */
+  }
+
+  .menu-text {
+    display: inline; /* vis på mobil */
+    font-size: 0.9rem; /* valgfritt: gjør den litt mindre */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .hamburger-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 }
 
