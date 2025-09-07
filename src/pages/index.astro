@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+import PageView from '../components/PageView.astro';
+import DateTag from '../components/DateTag.astro';
 const pageTitle = "megselv→tonie";
 ---
 <BaseLayout pageTitle={pageTitle}>
 
-<h1>Det er meg – meg selv Tonie.</h1>
+<h1>Det er meg – meg selv Tonie.<DateTag datetime="2025-08-28T00:06" /></h1>
 	<h2> Jeg drømte om å bli kokk eller elektriker som barn.</h2>
 
 
@@ -17,5 +18,9 @@ const pageTitle = "megselv→tonie";
 
 <p>
   Denne nettsiden har jeg bygget helt fra bunnen. Jeg skriver i HTML og CSS, og har lært meg å bruke JavaScript der jeg må – som i menyen som åpner og lukker seg på mobil. Den er jeg veldig stolt av, og jeg brukte ca 5 timer på å sette den opp.
+<p>
+  NYESTE NYTT GUTTAAA! <DateTag datetime="2025-09-07T19:06" />
+  </p>
+  <PageView />
 </BaseLayout>
 

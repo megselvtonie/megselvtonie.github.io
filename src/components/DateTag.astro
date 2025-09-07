@@ -1,0 +1,98 @@
+---
+const { datetime } = Astro.props;
+const d = new Date(datetime);
+
+// Nåtid
+const now = new Date();
+const diffMs = now.getTime() - d.getTime();
+const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+const diffMonths = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
+const diffYears = now.getFullYear() - d.getFullYear();
+
+let label = "";
+
+// Ulike tilfeller
+if (diffDays === 0 && now.getDate() === d.getDate()) {
+  label = `i dag kl. ${d.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" })}`;
+} else if (diffDays === 1) {
+  label = `i går kl. ${d.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" })}`;
+} else if (diffDays < 7) {
+  const weekday = d.toLocaleDateString("no-NO", { weekday: "long" });
+  const timeStr = d.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" });
+  label = `${weekday} kl. ${timeStr}`;
+} else if (diffDays < 14) {
+  label = `for 1 uke siden`;
+} else if (diffDays < 21) {
+  label = `for 2 uker siden`;
+} else if (diffMonths === 1) {
+  label = `for 1 måned siden`;
+} else if (diffMonths === 6) {
+  label = `for 6 måneder siden`;
+} else if (diffYears === 1) {
+  label = `i fjor`;
+} else if (diffYears >= 2) {
+  // Hvis datoen er mer enn 5 år gammel
+  label = `så lenge siden at jeg ikke husker`;
+} else {
+  // Standard: vis hele datoen
+const dateStr = d.toLocaleDateString("no-NO", {
+  weekday: "narrow",  // "mandag" (long) / "man." (short) / "ma" (narrow)
+  day: "numeric",   // "07" (2-sifret dag) / "7" (numeric)
+  month: "short",    // "september" (long) / "sep." (short) / "9" (numeric)
+  year: "numeric",  // "2025" (numeric) / "25" (2-digit)
+});
+  const timeStr = d.toLocaleTimeString("no-NO", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  label = `${dateStr} kl. ${timeStr}`;
+}
+---
+
+<span class="date-tag">{label}</span>
+
+<style>
+  .date-tag {
+    display: inline-block;
+    color: #333;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: system-ui, sans-serif;
+  }
+</style>
+
+<!--
+Eksempel på bruk av DateTag.astro
+---------------------------------
+Denne komponenten tar inn en dato (datetime-prop) i ISO-format: "YYYY-MM-DDTHH:mm".
+
+Den regner selv ut hvor lenge siden datoen var, og viser noe lesbart på norsk:
+  - i dag kl. 18.32
+  - i går kl. 14.05
+  - for 3 dager siden
+  - for 1 uke siden
+  - for 2 uker siden
+  - for 1 måned siden
+  - for 6 måneder siden
+  - i fjor
+  - så lenge siden at jeg ikke husker (eldre enn 2 år)
+  - ellers: full dato + klokkeslett på norsk
+
+Tips:
+- Skriv alltid datetime i ISO-format (YYYY-MM-DDTHH:mm), da fungerer det i alle nettlesere.
+- Du kan plassere <DateTag /> hvor som helst, f.eks. inni <p>, <li>, <footer> osv.
+- Teksten endrer seg relativt til når leseren åpner siden.
+  Eksempel: Publiserer du i dag, og noen åpner i morgen → de vil se "i går".
+
+Eksempler:
+  Sist oppdatert: <DateTag datetime="2025-09-07T18:32" />
+    → Viser "i dag kl. 18.32" (hvis åpnet samme dag)
+
+  Blogg skrevet: <DateTag datetime="2025-08-23T18:32" />
+    → Viser "for 2 uker siden" (eller lignende, avhengig av nåværende dato)
+
+  Gamle minner: <DateTag datetime="2024-05-01T12:00" />
+    → Viser "i fjor" hvis åpnet i 2025
+-->
