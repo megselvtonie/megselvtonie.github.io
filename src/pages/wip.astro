@@ -1,13 +1,17 @@
 ---
 import '../styles/global.css';
+import DateTag from '../components/DateTag.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Det vktigste → Tonie Wei";
+import Hero from "../components/Hero.astro";
 const startDate = new Date("2025-09-07T18:28:00"); // ← startdato
 ---
 <BaseLayout pageTitle={pageTitle}>
 
-<h1>Dette er VIP–siden</h1>
-<h2>Dette er stedet der komponenter skapes!</h2>
+
+
+<h1>Dette er VVIP–siden<DateTag datetime="2025-09-17T23:20" /></h1>
+<h2>Den står for Work In Progress eller Under Arbeid på norsk</h2>
 
 <p>
   Når jeg lager nettsiden bruker jeg mange timer på å lage komponenter som skal være en del av nettstedet mitt.
@@ -22,6 +26,16 @@ const startDate = new Date("2025-09-07T18:28:00"); // ← startdato
 <div id="time-counter">
   Laster teller…
 </div>
+
+<h4>Media queries for skrift headings under utvikling</h4>
+<ul>
+<li><h1>Dette er h1</h1>
+    <h2>Dette er h2</h2>
+    <h3>Dette er h3</h3>
+    <h4>Dette er h4</h4>
+</li>
+
+</ul>
 
 <script is:inline>
   const start = new Date("2025-09-07T18:28:00"); // samme som over
@@ -75,7 +89,14 @@ const startDate = new Date("2025-09-07T18:28:00"); // ← startdato
   setInterval(updateCounter, 60000); // oppdater hvert minutt
 </script>
 
+<Hero 
+  title="Det er meg – meg selv Tonie"
+  description="Dette er min personlige nettside. Jeg skriver, koder og tester ting jeg lærer."
+  image="/img/rosahjerte.png" 
+/>
+
 <style>
+
   #time-counter {
     margin: 1rem 0;
     padding: 0.5rem;

@@ -1,79 +1,72 @@
 ---
-/* Footer.astro: Footer-komponenten for nettsiden koblet med header og NAV i baselayout */
-import Social from '../components/Social.astro';
+import Social from "../components/Social.astro";
 ---
 
 <footer class="footer">
-  <div class="left">Dette er footeren min:
-    <span class="item">megselvtonie © 2025<br/>
-   
-    </span></div>
+  <span class="item">megselvtonie © 2025</span>
 
-  <nav class="right">
-    
-    <Social platform="letterboxd" username="megselvtonie" compact class="item" />
-    <Social platform="instagram"  username="megselvtonie" compact class="item" />
-    <Social platform="github"     username="megselvtonie" compact class="item" />
-    <p>toniefiskvik [at] gmail [dot] com</p>
-    <a href="#top" class="item back-to-top">↑ Til toppen</a>
-  </nav>
+  <Social platform="letterboxd" username="megselvtonie" compact class="item" />
+  <Social platform="instagram"  username="megselvtonie" compact class="item" />
+  <Social platform="github"     username="megselvtonie" compact class="item" />
 
-  <style>
-    .footer {
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.7rem;
-      color: #000;
-      padding: 6px 0;
-      border-top: 0.5rem solid #000;
+  <!-- E-post genereres med JS -->
+  <span id="email" class="item email"></span>
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      /* Viktig: ikke la desktop “wrappe” før breakpoint */
-      white-space: nowrap;
-    }
-
-    .left { text-align: left; }
-
-    .right {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      flex-wrap: nowrap;   /* ← tving én linje på desktop */
-    }
-
-    .item { display: inline-block; }
-
-    .footer a {
-      color: #000;
-      text-decoration: none;
-    }
-    .footer a:hover { text-decoration: underline; }
-
-    /* MOBIL: bytt helt til stående layout */
-    @media (max-width: 600px) {
-      .footer {
-        flex-direction: column;
-        align-items: flex-start;
-        white-space: normal;   /* tillat linjebrudd i kolonne */
-      }
-
-      .right {
-        flex-direction: column;   /* ett element per linje */
-        align-items: flex-start;  /* venstrestilt */
-        gap: .25rem;
-        width: 100%;
-      }
-
-      /* Flytt "Til toppen" øverst i den høyre kolonnen */
-      .back-to-top {
-        order: -1;
-        margin-bottom: .25rem;
-      }
-    }
-  </style>
+  <a href="#top" class="item back-to-top">↑ Til toppen</a>
 </footer>
+
+<script is:inline>
+  // Sett sammen e-post i JS slik at den ikke finnes i rå HTML
+  const user = "toniefiskvik";
+  const domain = "gmail.com";
+  const el = document.getElementById("email");
+  if (el) {
+    el.innerHTML = `<a href="mailto:${user}@${domain}">${user} [at] ${domain.replace(".", " [dot] ")}</a>`;
+  }
+</script>
+
+<style>
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;   /* midtstilt på desktop */
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+    padding: 0.5rem 0;
+    border-top: 0.2rem solid #000;
+
+    font-size: 0.75rem; /* 12px */
+    line-height: 1.4;
+    color: #000;
+  }
+
+  .item {
+    display: inline-block;
+  }
+
+  .footer a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
+  .email {
+    font-size: 0.75rem; /* 12px */
+    font-style: italic;
+  }
+
+  /* === Mobil (vertikal og venstrestilt) === */
+  @media (max-width: 600px) {
+    .footer {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  }
+</style>

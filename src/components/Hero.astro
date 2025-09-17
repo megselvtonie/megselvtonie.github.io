@@ -1,0 +1,57 @@
+---
+// Hero.astro
+// Props: title, description, image (valgfri)
+const { title, description, image } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
+
+  <div class="hero-image">
+    {image && <img src={image} alt={title} loading="lazy" />}
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* tekst til venstre, bilde til høyre */
+    gap: 2rem;
+    align-items: center;
+    margin: 2rem 0;
+  }
+
+  .hero-text {
+    font-family: "Times", serif;
+  }
+
+  .hero-text h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.2;
+    color: #d11305; /* accent */
+  }
+
+  .hero-text p {
+    margin: 0;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.5;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Mobil: stack tekst over bilde */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

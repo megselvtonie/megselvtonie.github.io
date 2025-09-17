@@ -31,7 +31,8 @@ import Navigation from "./Navigation.astro";
   .site-header {
     width: 100vw; /* full bredde */
     margin-left: calc(-50vw + 50%);
-    padding: 1rem;
+  padding: 1rem; /* mindre luft over/under, behold sidemargin */
+  padding-top: 0%;
     box-sizing: border-box;
   }
 
@@ -66,7 +67,7 @@ import Navigation from "./Navigation.astro";
    /* Plasser hjertet øverst til høyre */
   .logo-link {
     float: right;
-    margin-top: -3.5rem;
+    margin-top: -4.5rem;
   }
 
   .logo-link img {
