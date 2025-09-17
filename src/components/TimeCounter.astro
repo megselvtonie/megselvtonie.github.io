@@ -1,0 +1,72 @@
+---
+const startDate = new Date("2025-23-08T18:28:00"); // ← startdato
+---
+
+<div id="time-counter">
+  Laster teller…
+</div>
+
+<script is:inline>
+  const start = new Date("2025-09-07T18:28:00"); // samme som over
+  const el = document.getElementById("time-counter");
+
+  function updateCounter() {
+    const now = new Date();
+    const diffMs = now - start;
+
+    // Grunnleggende enheter
+    const minutes = Math.floor(diffMs / (1000 * 60));
+    const hours   = Math.floor(minutes / 60);
+    const days    = Math.floor(hours / 24);
+    const months  = Math.floor(days / 30.44);
+    const years   = Math.floor(days / 365.25);
+
+    // Spesialberegning
+    const dogYears = (years * 7).toFixed(1);
+
+    const avgDogLife = 12; // Lapphund ca 12 år
+    const deadDogs = (years / avgDogLife).toFixed(2);
+
+    // Reisetid
+    const moonTripHours = 51 + 49/60; // Apollo 11: 51t 49m
+    const earthTripHours = 80;        // fly jorda rundt
+
+    const moonTrips = Math.floor(hours / moonTripHours);
+    const worldTrips = Math.floor(hours / earthTripHours);
+
+    // Utviklingstimer = rene timer
+    const devHours = hours;
+
+    el.innerHTML = `
+      <p><strong>Fra ${start.toLocaleString("no-NO")} har det gått:</strong></p>
+      <ul>
+        <li>${years} år</li>
+        <li>${months} måneder</li>
+        <li>${days} dager</li>
+        <li>${hours} timer og ${minutes % 60} minutter</li>
+      </ul>
+      <p>🐶 I hundeår: ${dogYears}</p>
+      <p>☠️ Antall døde lapphunder (12 års snitt): ${deadDogs}</p>
+      <p>✈️ Antall jordrundt-reiser (80t per): ${worldTrips}</p>
+      <p>🌕 Antall turer til månen (51t 49m per): ${moonTrips}</p>
+      <p>💻 Utviklingstimer: ${devHours}</p>
+    `;
+  }
+
+  updateCounter();
+  setInterval(updateCounter, 60000); // oppdater hvert minutt
+</script>
+
+<style>
+  #time-counter {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: 1px solid black;
+    background: #fff;
+  }
+  #time-counter ul {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+  }
+</style>

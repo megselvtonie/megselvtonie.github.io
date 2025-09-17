@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Det vktigste → Tonie Wei";
+const startDate = new Date("2025-09-07T18:28:00"); // ← startdato
+---
+<BaseLayout pageTitle={pageTitle}>
+
+<h1>Dette er VIP–siden</h1>
+<h2>Dette er stedet der komponenter skapes!</h2>
+
+<p>
+  Når jeg lager nettsiden bruker jeg mange timer på å lage komponenter som skal være en del av nettstedet mitt.
+</p>
+<p>
+  For å se komponentene legger jeg de her. Når de er klare tar jeg de ut herfra og plasserer de som først planlagt inne på selve nettsiden.
+</p>
+
+<h2>Under utvikling</h2>
+<p>Teller som viser hvor mye tid jeg har brukt på nettstedet.</p>
+<p>Hva er morsomt å telle i?</p>
+<div id="time-counter">
+  Laster teller…
+</div>
+
+<script is:inline>
+  const start = new Date("2025-09-07T18:28:00"); // samme som over
+  const el = document.getElementById("time-counter");
+
+  function updateCounter() {
+    const now = new Date();
+    const diffMs = now - start;
+
+    // Grunnleggende enheter
+    const minutes = Math.floor(diffMs / (1000 * 60));
+    const hours   = Math.floor(minutes / 60);
+    const days    = Math.floor(hours / 24);
+    const months  = Math.floor(days / 30.44);
+    const years   = Math.floor(days / 365.25);
+
+    // Spesialberegning
+    const dogYears = (years * 7).toFixed(1);
+
+    const avgDogLife = 12; // Lapphund ca 12 år
+    const deadDogs = (years / avgDogLife).toFixed(2);
+
+    // Reisetid
+    const apolloOneWay = 51 + 49/60;   // Apollo 11 én vei
+    const moonTripHours = apolloOneWay * 2; // tur-retur
+    const earthTripHours = 80;
+
+    const moonTrips = Math.floor(hours / moonTripHours);
+    const worldTrips = Math.floor(hours / earthTripHours);
+
+    // Utviklingstimer = rene timer
+    const devHours = hours;
+
+    el.innerHTML = `
+      <p><strong>Fra ${start.toLocaleString("no-NO")} har det gått:</strong></p>
+      <ul>
+        <li>${years} år</li>
+        <li>${months} måneder</li>
+        <li>${days} dager</li>
+        <li>${hours} timer og ${minutes % 60} minutter</li>
+      </ul>
+      <p>🐶 I hundeår: ${dogYears}</p>
+      <p>☠️ Antall døde lapphunder: ${deadDogs}</p>
+      <p>✈️ Antall jordrundt-reiser: ${worldTrips}</p>
+      <p>🌕 Antall turer til månen: ${moonTrips}</p>
+      <p>💻 Utviklingstimer: ${devHours}</p>
+    `;
+  }
+
+  updateCounter();
+  setInterval(updateCounter, 60000); // oppdater hvert minutt
+</script>
+
+<style>
+  #time-counter {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: 1px solid black;
+    background: #fff;
+  }
+  #time-counter ul {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+  }
+</style>
+</BaseLayout>

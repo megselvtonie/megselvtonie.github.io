@@ -1,16 +1,17 @@
 ---
-/* ActiveLink.astro hvordan aktiv link ser ut*/
+/* ActiveLink.astro – viser hvilken side som er aktiv */
 const { href, text } = Astro.props;
 const { pathname } = Astro.url;
-const isActive = pathname === href || pathname.startsWith(href + "/");
+
+// Sjekker om path matcher, fanger både "/about" og "/about/"
+const isActive = pathname === href || pathname.startsWith(href);
 ---
 
 <a href={href} class={isActive ? "nav-active" : ""}>{text}</a>
 
 <style>
   .nav-active {
-    font-weight: 700;
-    text-decoration: underline;
-    /* ev. border-bottom: 2px solid currentColor; */
+    font-weight: bold;       /* gjør den litt tydeligere */
+    color: #d11305;          /* bruk accentfargen din */
   }
 </style>

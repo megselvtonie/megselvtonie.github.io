@@ -1,4 +1,5 @@
 ---
+
 import ActiveLink from './ActiveLink.astro';
 ---
 
@@ -10,12 +11,13 @@ import ActiveLink from './ActiveLink.astro';
       <ActiveLink href="/about" text="Om meg" />
       <span class="separator">|</span>
     </li>
-   <!-- <li>
-      <ActiveLink href="/blog" text="Heia bloggen &lt;3" />
-      <span class="separator">|</span>
-    </li>--> 
+
     <li>
       <ActiveLink href="/nettsiden" text="Hvorfor har jeg kodet en nettside?" />
+      <span class="separator">|</span>
+    </li>
+      <li>
+      <ActiveLink href="/wip" text="VIP" />
       <span class="separator">|</span>
     </li>
 
@@ -36,12 +38,6 @@ import ActiveLink from './ActiveLink.astro';
     padding: 0;
     margin: 0;
   }
-
-  .nav-links a.nav-active {
-    font-weight: bold; /* fet skrift på aktiv side */
-    border-bottom: 2px solid currentColor;
-  }
-
 
 
   /* === Mobil: skjul lista, vis når expanded === */
