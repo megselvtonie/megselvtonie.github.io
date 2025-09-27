@@ -9,7 +9,11 @@ const games = defineCollection({
     time: z.string(),
     difficulty: z.enum(["lett", "middels", "avansert"]),
     tags: z.array(z.string()).optional(),
+    recommendedByMe: z.boolean().optional(),
+    cover: z.string().optional(),
+    intro: z.string().max(255).optional(), // 🔥 nytt felt: mikroinnlegg
   }),
 });
 
 export const collections = { games };
+// 🔥 nytt felt: mikroinnlegg

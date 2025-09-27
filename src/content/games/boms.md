@@ -1,6 +1,6 @@
 ---
 title: "Boms & President"
-subtitle: "Plukk og send videre – superlett og gøy"
+subtitle: "Plukk og send videre – superlett og gøy øisj føaijd føaijd føaisjd føoaij sdøfoi asøodifj aøoijd føaosid jføaoijs døfoiaj sødoifj aøsodijf øaosidj føaoisjd føoaij sdøofija søodfij øaosidf jo"
 players: "2–5"
 time: "15–20 min"
 difficulty: "lett"

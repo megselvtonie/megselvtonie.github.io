@@ -1,0 +1,94 @@
+---
+import { getCollection } from "astro:content";
+
+// Definer type for et breadcrumb-element
+type Crumb = { label: string; href?: string };
+
+const { pathname } = Astro.url;
+
+// Splitt opp path og fjern tomme deler
+const parts = pathname.split("/").filter(Boolean);
+
+// Hent spill fra content hvis vi er på /spill/
+let games = [];
+if (parts[0] === "spill") {
+  games = await getCollection("games");
+}
+
+// Start alltid med "Forside"
+const items: Crumb[] = [{ label: "Forside", href: "/" }];
+
+// Bygg breadcrumbs
+parts.forEach((part, i) => {
+  const href = "/" + parts.slice(0, i + 1).join("/");
+  const isLast = i === parts.length - 1;
+
+  let label = decodeURIComponent(part);
+
+  // Hvis vi er på en spillside → bruk tittel fra frontmatter
+  if (parts[0] === "spill" && i === parts.length - 1) {
+    const game = games.find((g) => g.slug === part);
+    if (game) label = game.data.title;
+  }
+
+  if (isLast) {
+    items.push({ label }); // nåværende side (uten href)
+  } else {
+    items.push({ label, href });
+  }
+});
+---
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+  <ol>
+    {items.map((item, i) => (
+      <li>
+        {item.href ? (
+          <a href={item.href}>{item.label}</a>
+        ) : (
+          <span class="current">{item.label}</span>
+        )}
+        {i < items.length - 1 && <span class="separator">/</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb {
+    font-size: 0.875rem; /* ca 14px */
+    margin: 0.25rem 0 0.5rem;
+    font-family: system-ui, sans-serif;
+  }
+
+  .breadcrumb ol {
+    list-style: none;
+    font-size: 14px;
+
+    display: flex;
+    gap: 0.25rem;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: rgb(0, 102, 204); /* blå lenker */
+    text-decoration: none;
+    font-weight: normal;
+  }
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumb .current {
+    color: #000; /* nåværende side */
+    font-weight: normal
+    ;
+  }
+
+  .separator {
+    color: #aaa; /* nedtonet separator */
+    margin: 0 0.25rem;
+  }
+</style>
