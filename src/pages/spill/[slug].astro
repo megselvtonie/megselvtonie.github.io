@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+type Game = CollectionEntry<"games">;
+
+export async function getStaticPaths() {
+  const games: Game[] = await getCollection("games");
+  return games.map((game) => ({
+    params: { slug: game.slug },
+    props: { game },
+  }));
+}
+
+const { game } = Astro.props as { game: Game };
+const { Content } = await render(game);
+
+const {
+  title,
+  subtitle,
+  players,
+  time,
+  difficulty,
+  tags = [],
+  cover,
+  recommendedByMe,
+} = game.data;
+
+const pageTitle = `${title} – Kortspill`;
+---
+<BaseLayout pageTitle={pageTitle}>
+  <article>
+    <h1>{title}</h1>
+    {subtitle && <p><em>{subtitle}</em></p>}
+    <ul>
+      <li>👥 {players}</li>
+      <li>🕒 {time}</li>
+      <li>⚙️ {difficulty}</li>
+    </ul>
+    <div class="tags">
+      {recommendedByMe && <span class="chip chip--rec">anbefalt</span>}
+      {tags.map((t: string) => <span class="chip">{t}</span>)}
+    </div>
+    <Content />
+    <p><a href="/spill">← Tilbake til oversikten</a></p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,138 @@
+---
+import type { CollectionEntry } from "astro:content";
+type Game = CollectionEntry<"games">;
+
+const { game } = Astro.props as { game: Game };
+
+const {
+  title,
+  subtitle,
+  players,
+  time,
+  difficulty,
+  tags = [],
+  recommendedByMe,
+  cover,
+} = game.data;
+
+const href = `/spill/${game.slug}`;
+---
+
+<article class="game-card">
+  <a href={href} class="card-link">
+    {cover ? (
+      <img src={cover} alt={`Omslag: ${title}`} class="cover" loading="lazy" />
+    ) : (
+      <div class="cover placeholder">Ingen bilde</div>
+    )}
+
+    <div class="content">
+      <h2 class="title">{title}</h2>
+      {subtitle && <p class="subtitle">{subtitle}</p>}
+      <div class="meta-tags">
+        <span class="chip">👥 {players}</span>
+        <span class="chip">🕒 {time}</span>
+        <span class="chip">{difficulty}</span>
+        {recommendedByMe && <span class="chip rec">★ anbefalt</span>}
+        {tags.map((t: string) => (
+          <span class="chip">{t}</span>
+        ))}
+      </div>
+    </div>
+  </a>
+</article>
+
+<style>
+.game-card {
+  border: 1px solid var(--border-color, #000);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-link {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column; /* mobil først */
+  height: 100%;
+}
+
+.cover {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: #f2f2f2;
+}
+.cover.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.content {
+  padding: 0.75rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  font-style: italic;
+}
+
+.meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.chip {
+  border: 1px solid #000;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  background: #fff;
+}
+.chip.rec {
+  background: #ffeec2;
+  font-weight: 500;
+}
+
+/* Desktop: gjør kortene horisontale */
+@media (min-width: 768px) {
+  .card-link {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .cover {
+    width: 220px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .content {
+    padding: 1rem;
+    flex: 1;
+  }
+}
+</style>

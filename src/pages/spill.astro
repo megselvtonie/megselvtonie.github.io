@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GameCard from "../components/GameCard.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type Game = CollectionEntry<"games">;
+const games: Game[] = await getCollection("games");
+---
+
+<BaseLayout pageTitle="Kortspill">
+  <h1>Kortspill</h1>
+  <p>Bla deg nedover og oppdag nye kortspill – finn inspirasjon før du velger hva du vil lære deg.</p>
+
+  <section class="grid">
+    {games.map((game) => <GameCard game={game} />)}
+  </section>
+</BaseLayout>
+
+<style>
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin-top: 1.5rem;
+}
+
+/* Desktop: én kolonne */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

@@ -6,16 +6,12 @@ const d = new Date(datetime);
 const now = new Date();
 const diffMs = now.getTime() - d.getTime();
 const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-const diffMonths = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
+const diffMonths =
+  (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
 const diffYears = now.getFullYear() - d.getFullYear();
 
+const timeStr = d.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" });
 let label = "";
-
-// Formater klokkeslett
-const timeStr = d.toLocaleTimeString("no-NO", {
-  hour: "2-digit",
-  minute: "2-digit",
-});
 
 // Ulike tilfeller
 if (diffDays === 0) {
@@ -23,18 +19,18 @@ if (diffDays === 0) {
 } else if (diffDays === 1) {
   label = `i går kl. ${timeStr}`;
 } else if (diffDays === 2) {
-  label = "i forgårs";
+  label = `i forgårs kl. ${timeStr}`;
 } else if (diffDays === 3) {
-  label = "for 72 timer siden";
-} else if (diffDays >= 4 && diffDays <= 6) {
+  label = "for 3 dager siden";
+} else if (diffDays < 7) {
   const weekday = d.toLocaleDateString("no-NO", { weekday: "long" });
-  label = `på ${weekday}`;
+  label = `skrevet ${weekday}`;
 } else if (diffDays === 7) {
   label = "for 1 uke siden";
-} else if (diffDays === 14) {
-  label = "14 dager siden";
 } else if (diffDays < 14) {
   label = `for ${diffDays} dager siden`;
+} else if (diffDays === 14) {
+  label = "for 2 uker siden";
 } else if (diffMonths === 1) {
   label = "for 1 måned siden";
 } else if (diffMonths === 6) {
@@ -44,18 +40,19 @@ if (diffDays === 0) {
 } else if (diffYears >= 2) {
   label = "så lenge siden at jeg ikke husker";
 } else {
-  // Standard fallback: vis full dato
+  // Standard fallback → full dato
   const dateStr = d.toLocaleDateString("no-NO", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    year: "2-digit",
   });
-  label = `${dateStr} kl. ${timeStr}`;
+  label = `skrevet ${dateStr} ${timeStr}`;
 }
 ---
 
 <span class="date-tag">{label}</span>
+
 
 <style>
   .date-tag {
