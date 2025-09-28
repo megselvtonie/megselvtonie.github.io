@@ -2,7 +2,6 @@
 const { datetime } = Astro.props;
 const d = new Date(datetime);
 
-// Nåtid
 const now = new Date();
 const diffMs = now.getTime() - d.getTime();
 const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -11,48 +10,26 @@ const diffMonths =
 const diffYears = now.getFullYear() - d.getFullYear();
 
 const timeStr = d.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" });
-let label = "";
 
-// Ulike tilfeller
-if (diffDays === 0) {
-  label = `i dag kl. ${timeStr}`;
-} else if (diffDays === 1) {
-  label = `i går kl. ${timeStr}`;
-} else if (diffDays === 2) {
-  label = `i forgårs kl. ${timeStr}`;
-} else if (diffDays === 3) {
-  label = "for 3 dager siden";
-} else if (diffDays < 7) {
-  const weekday = d.toLocaleDateString("no-NO", { weekday: "long" });
-  label = `skrevet ${weekday}`;
-} else if (diffDays === 7) {
-  label = "for 1 uke siden";
-} else if (diffDays < 14) {
-  label = `for ${diffDays} dager siden`;
-} else if (diffDays === 14) {
-  label = "for 2 uker siden";
-} else if (diffMonths === 1) {
-  label = "for 1 måned siden";
-} else if (diffMonths === 6) {
-  label = "for 6 måneder siden";
-} else if (diffYears === 1) {
-  label = "i fjor";
-} else if (diffYears >= 2) {
-  label = "så lenge siden at jeg ikke husker";
-} else {
-  // Standard fallback → full dato
-  const dateStr = d.toLocaleDateString("no-NO", {
-    weekday: "short",
-    day: "2-digit",
-    month: "short",
-    year: "2-digit",
-  });
-  label = `skrevet ${dateStr} ${timeStr}`;
+function formatLabel() {
+  if (diffDays === 0) return `skrevet i dag kl. ${timeStr}`;
+  if (diffDays === 1) return `oppdatert i går kl. ${timeStr}`;
+  if (diffDays === 2) return `satt opp i forgårs`;
+  if (diffDays < 7) {
+    const weekday = d.toLocaleDateString("no-NO", { weekday: "long" });
+    return `lagt ut ${weekday}`;
+  }
+  if (diffDays < 14) return `for ${diffDays} dager siden`;
+  if (diffMonths === 1) return "for 1 måned siden";
+  if (diffMonths < 12) return `for ${diffMonths} måneder siden`;
+  if (diffYears === 1) return "i fjor";
+  return `${d.toLocaleDateString("no-NO")} kl. ${timeStr}`;
 }
+
+const label = formatLabel();
 ---
 
 <span class="date-tag">{label}</span>
-
 
 <style>
   .date-tag {

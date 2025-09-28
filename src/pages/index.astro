@@ -12,9 +12,6 @@ const pageTitle = "megselv→tonie";
 
 <p>
   Jeg husker mamma årna en datamaskin med Windos Vista i 2006. Den hadde en blank av/på-knapp som lyste blått når den var på. Og jeg brukte ofte stortåa til å skru den både av og på. Jeg fikk meg ingen nye venner på den maskinen, men jeg lærte meg å bruke Paint og Word Art.</p>
-<p>
-  Jeg heter Tonje og er 32 år gammel. I dag er det den 31. august 2025 og jeg bor i Mo i Rana.
-  </p>
 
 <p>
   Denne nettsiden har jeg bygget helt fra bunnen. Jeg skriver i HTML og CSS, og har lært meg å bruke JavaScript der jeg må – som i menyen som åpner og lukker seg på mobil. Den er jeg veldig stolt av, og jeg brukte ca 5 timer på å sette den opp.
@@ -24,38 +21,104 @@ const pageTitle = "megselv→tonie";
   <PageView />
 
   <section class="commit-log">
-  <h3>Oppsummering av endringene jeg har gjort</h3>
+  <section class="changelog">
+  <h1>📜 Changelog <DateTag datetime="2025-09-28T11:27" /></h1>
 
-  <h4>Design og struktur</h4>
+  <h2>September 2025</h2>
+
+  <h3>27. september</h3>
   <ul>
-    <li>Lagt inn en tydelig toppmeny med navigasjon, hamburger-meny på mobil og rosa hjerte-logo øverst til høyre.</li>
-    <li>Lagd et hero-område (stor overskrift med tekst og bilde) som brukes på utvalgte sider.</li>
-    <li>Justert globale stiler slik at typografi og overskrifter følger en fast skala inspirert av Aksel-designsystemet.</li>
+    <li><strong>Refaktorering av stilark (CSS)</strong><br />
+      Justert grunnstørrelse på tekst med fleksibel funksjon (<em>clamp()</em> → mellom 16px og 20px).  
+      Ryddet opp i overskriftsnivå (H1–H4) og brødtekst.  
+      Gjorde H2 litt mindre (maks 28px) for bedre lesbarhet.  
+      Oppdatert typografi i footer og navigasjon.
+    </li>
+    <li><strong>Brødsmulesti (Breadcrumb)</strong><br />
+      Ny komponent (<code>Breadcrumb.astro</code>) som sporer hvor man er på siden (<em>Astro.url.pathname</em>).  
+      Viser alltid «Forside» først. Viser sidens tittel (<em>frontmatter.title</em>) på spillsider.  
+      Design: diskret (14px), blå lenker, nåværende side i svart.
+    </li>
+    <li><strong>Spillkort (GameCard)</strong><br />
+      Fjernet bilde på kortene (nå tekstbaserte).  
+      Lagt til underoverskrift (subtitle).  
+      Nytt felt <code>intro</code> (kort pitch, maks 255 tegn).  
+      Beholder små “chips” (spillere, tid, vanskelighetsgrad, tagger).
+    </li>
+    <li><strong>Innholdsoppsett</strong><br />
+      Oppdatert <code>config.ts</code> med nytt felt <code>intro</code>.
+    </li>
+    <li><strong>Diverse</strong><br />
+      Rettet type-feil i Breadcrumb (href optional).  
+      Små stiljusteringer i date-tag, chips og hover-effekter.
+    </li>
+    <li><strong>Nye dynamiske spill-sider</strong><br />
+      Opprettet <code>src/pages/spill/[slug].astro</code> med <em>getStaticPaths()</em> som lager én side pr. spill.  
+      Bruker <em>CollectionEntry&lt;"games"&gt;</em> for typing i spill-komponenter.  
+      Metadata vises som chips både på kort og detaljsider.
+    </li>
   </ul>
 
-  <h4>Nye funksjoner</h4>
+  <h3>18. september</h3>
   <ul>
-    <li>Bygd inn en <strong>sidevisnings-teller</strong> som viser hvor mange ganger siden er besøkt i dag og totalt.</li>
-    <li>Lagd en <strong>tids-teller</strong> som regner ut hvor lenge siden jeg startet prosjektet – i dager, timer, hundeår, døde lapphunder, jordrundt-reiser og måneturer.</li>
-    <li>Lagd en <strong>vektmåler</strong> som regner ut hvor tung nettsiden er i KB.</li>
+    <li><strong>Ny Hero-komponent</strong> (fullbredde seksjon, responsiv, bryter ut av kolonne).</li>
+    <li><strong>Header & Footer</strong> (mindre luft, hjerte øverst til høyre, footer horisontal/vertikal).</li>
+    <li><strong>Typografi</strong> (justerte overskrifter med <em>clamp()</em>, line-height, letter-spacing).</li>
   </ul>
 
-  <h4>Innhold</h4>
+  <h3>17. september</h3>
+  <ul><li>Rettet en feil (<code>fix: div</code>).</li></ul>
+
+  <h3>7. september</h3>
   <ul>
-    <li>Skrevet en personlig “Om meg”-side med litt om hvem jeg er, hva jeg liker, og hvorfor jeg koder en nettside selv.</li>
-    <li>Lagt til en egen side om <strong>nettsiden</strong> som forklarer hvordan jeg bygger den, med enkle forklaringer på HTML, CSS og JavaScript.</li>
-    <li>Lagt til en egen bloggseksjon, med første innlegg skrevet i Markdown.</li>
-    <li>Opprettet en seksjon for <strong>kortspill</strong>, der alle spillene vises i kort (cards).</li>
-    <li>Lagd egne markdown-filer for spillene Boms & President, Løgn, Rummy, Smash! og Hurtigtoget, med informasjon om spilleregler, tid, antall spillere og mine anbefalinger.</li>
-    <li>Hvert spillkort har bilde, undertittel, små “chips” med info (tid, spillere, vanskelighet, anbefalt av meg) og link til egen side.</li>
+    <li><strong>Ny datomerking (DateTag)</strong> (viser “i dag”, “i går”, “for 1 uke siden” osv.).</li>
+    <li><strong>Besøksteller (PageView)</strong> (viser dagens og totalt antall besøk).</li>
+    <li><strong>Tids-teller (Counter)</strong> (viser tid siden startdato, inkl. hundeår, måneturer osv.).</li>
   </ul>
 
-  <h4>Små detaljer</h4>
+  <h3>4. september</h3>
+  <ul><li>Småjusteringer i kildekoden (<code>chore: fixed small src</code>).</li></ul>
+
+  <h3>31. august</h3>
   <ul>
-    <li>Footer nederst med sosiale medier, e-post (skjult i koden) og “Til toppen”-lenke.</li>
-    <li>Små “datomerker” som viser når ting ble skrevet eller hvor lenge siden det er.</li>
-    <li>Responsivt design slik at alt ser bra ut både på mobil, nettbrett og desktop.</li>
+    <li><strong>Rettet feil i blogginnlegg-layout</strong> (sti til <code>MarkdownPostLayout.astro</code>).</li>
+    <li><strong>Navigasjonsmeny</strong> (ny hamburger for mobil, skjuler separatorer, bedre tilgjengelighet).</li>
+    <li><strong>Generell rydding</strong> (redeploys, refaktorering).</li>
   </ul>
+
+  <h3>27. august</h3>
+  <ul>
+    <li><strong>Typografi</strong> (H1 maks 50px, H2 maks 36px, H3 maks 28px, skalerer med <em>clamp()</em>).</li>
+    <li><strong>BaseLayout</strong> (eksterne lenker åpner i ny fane med sikkerhet).</li>
+    <li><strong>Ryddet global.css</strong> (Times font, oppdatert container og nav).</li>
+  </ul>
+
+  <h3>26. august</h3>
+  <ul>
+    <li><strong>Refaktorering av BaseLayout og navigasjon</strong> (HTML-struktur, header, footer, <em>&lt;slot /&gt;</em> i <em>&lt;main&gt;</em>, unike titler, ryddet props og slots).</li>
+  </ul>
+
+  <h3>25. august</h3>
+  <ul>
+    <li><strong>Ny måler for dataforbruk (PageWeight)</strong> (viser hvor mye data siden laster i KB).</li>
+    <li><strong>Kodeformattering med Prettier</strong>.</li>
+    <li><strong>Rettet filnavn</strong> (<code>Navigation.astro</code> med stor N).</li>
+    <li><strong>CSS og footer</strong> (mer styling og sosiale medier-lenker).</li>
+  </ul>
+
+  <h3>24. august</h3>
+  <ul>
+    <li><strong>Ny bloggpost og sider</strong> (første innlegg, about og blog-sider).</li>
+    <li><strong>Domene og GitHub Actions</strong> (CNAME og deploy workflow).</li>
+    <li><strong>Oppdatert README</strong> (personlig tekst).</li>
+  </ul>
+
+  <h3>23. august</h3>
+  <ul>
+    <li><strong>Starten på prosjektet</strong> (Initial commit fra Astro, første commit i repo).</li>
+  </ul>
+</section>
+
 </section>
 
 <style>

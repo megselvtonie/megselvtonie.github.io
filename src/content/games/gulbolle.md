@@ -1,18 +1,32 @@
 ---
 title: "Gul bolle"
-subtitle: "Forklar ord uten å si ordet"
-players: "4+"
-time: "30–60 min"
+subtitle: "Et enkelt og kaotisk kortspill med mye latter"
+players: "3–6"
+time: "10–15m"
 difficulty: "lett"
-tags: ["familie", "party", "lagspill"]
+tags: ["familie", "party", "bløff", "kaos"]
 recommendedByMe: true
-intro: "Et hektisk og morsomt lagspill hvor du forklarer ord for lagkameraten din uten å bruke selve ordet. Perfekt for familiesamlinger og vennekvelder!"
+cover: "/img/games/gul-bolle.jpg"
+pubDate: 2025-09-28
 ---
 
-## Kort forklart
-
-Spillerne deles i lag. Hvert lag prøver å forklare flest mulig ord på kortene sine før tiden går ut.
+Kort forklart: Spillerne roper og legger kort i en felles bunke. Målet er å bli kvitt kortene sine, men man må følge med – når det dukker opp **gul bolle** gjelder spesialregler.
 
 ## Min anbefaling
 
-Alias er perfekt for store grupper som liker høyt tempo og mye latter.
+Gul bolle passer best når man vil ha noe kort, enkelt og tullete. Det blir fort mye latter og kaos, og alle kan være med uten forkunnskaper.
+
+## Hvordan spille
+
+1. **Del ut alle kortene** til spillerne.
+2. Spilleren til venstre for giver starter og legger et kort midt på bordet, med bildesiden opp.
+3. Turen går med klokka. Hver spiller legger ett kort på toppen av bunken.
+4. **Når et gult kort legges** → alle må rope «GUL BOLLE!» og legge hånden på bunken.
+   - Den som legger hånden sist trekker 3 straffekort fra bunken.
+5. **Vinneren** er den som først blir kvitt alle kortene sine.
+   - Hvis flere blir ferdig i samme runde, vinner den som la siste kortet.
+
+## Tips
+
+- Ikke nøl! Straffekort gjør det mye vanskeligere å bli kvitt hånden sin.
+- Jo flere spillere, desto morsommere (og mer kaotisk).

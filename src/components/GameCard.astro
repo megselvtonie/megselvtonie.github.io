@@ -26,8 +26,8 @@ const href = `/spill/${game.slug}`;
       {intro && <p class="intro">{intro}</p>}
 
       <div class="meta-tags">
-        <span class="chip">👥 {players}</span>
-        <span class="chip">🕒 {time}</span>
+        <span class="chip">{players}</span>
+        <span class="chip">{time}</span>
         <span class="chip">{difficulty}</span>
         {recommendedByMe && <span class="chip rec">★ anbefalt</span>}
         {tags.map((t: string) => (
