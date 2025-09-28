@@ -31,7 +31,7 @@ Spillet går over ulike runder som stikkes ut.
 - **Senere runder:** Presidenten starter alltid.
 - Første spiller kan legge **enkeltkort, par, trippel eller fire like**.
 - De andre må legge like mange kort, med høyere verdi.
-- Du må passe om du ikke kan legge ut, og du kan også velge å passe runden. Om alle passer går bunken ut, og siste spiller som la ut kort starter ny runde.
+- Du må passe om du ikke kan legge ut, og du kan også velge å passe runden. Om alle passer går bunken ut, og siste spiller som la ut kort starter ny runde. sldkjf øalskdjf øaljdf ølakjsd øflkjasø dfkjaødkjføaksjd følkasjd følkajsdøfkja søldkfj
 - Hvis siste spiller er tom for kort går turen til spilleren til venstre.
 - Den som blir kvitt alle kort først, **blir president** (se bytting av kort).
 
