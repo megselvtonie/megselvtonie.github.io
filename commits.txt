@@ -1,0 +1,45 @@
+2025-09-27 – feat: refactor global styles, add breadcrumb + new gamecard design
+2025-09-27 – feat(spill): legg til dynamiske spill-sider med type-sikring
+2025-09-18 – feat: legg til Hero-komponent og juster header/typografi
+2025-09-17 – fix: div
+2025-09-07 – feat: datetag and pageview
+2025-09-07 – feat: counter for website
+2025-09-04 – chore: fixed small src
+2025-08-31 – Chose: Refactoring
+2025-08-31 – chore: redeploy
+2025-08-31 – fix(posts): riktig sti til MarkdownPostLayout i første.md
+2025-08-31 – fix: rettet sti til MarkdownPostLayout i første bloggpost
+2025-08-31 – fix(posts): correct layout path for MarkdownPostLayout
+2025-08-31 – fix: rettet layout-sti i første blogginnlegg og ryddet i oppsettet
+2025-08-31 – git commit -m "feat(nav): add responsive hamburger menu with text option, hide separators on mobile, align links horizontally on desktop
+2025-08-27 – chore: prettier write
+2025-08-27 – feat: improve site typography, security, and layout handling
+2025-08-26 – feat(site): refactor nav and layout, improve structure and formatting
+2025-08-25 – chore: format code with Prettier
+2025-08-25 – feat: vis total databruk på siden i KB med forklarende tekst
+2025-08-25 – fix: correct file casing to Navigation.astro
+2025-08-25 – Rename navigation.astro to Navigation.astro
+2025-08-25 – chore: trigger redeploy
+2025-08-25 – chore: force redeploy
+2025-08-25 – bug fix case sensitive things
+2025-08-25 – mer css og footer og riktig sosiale medier
+2025-08-25 – CSS global
+2025-08-24 – lagt inn enkel frontmatter og javascript eller
+2025-08-24 – Merge branch 'main' of https://github.com/megselvtonie/megselvtonie
+2025-08-24 – added github actions gjennom yml and added custom domain in CNAME public
+2025-08-24 – Delete CNAME
+2025-08-24 – Update CNAME
+2025-08-24 – Create CNAME
+2025-08-24 – added first blog post
+2025-08-24 – added first blog post
+2025-08-24 – Added two new pages - about and blog
+2025-08-24 – Merge branch 'main' of https://github.com/megselvtonie/megselvtonie
+2025-08-24 – refactor: update README.md to remove Astro Starter Kit content and add personalized greeting
+2025-08-24 – Update README.md
+2025-08-24 – Update README.md
+2025-08-24 – Update README.md
+2025-08-24 – Update README.md
+2025-08-24 – Update README.md
+2025-08-24 – initial commit
+2025-08-23 – Initial commit
+2025-08-23 – Initial commit from Astro

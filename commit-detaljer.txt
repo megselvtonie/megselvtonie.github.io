@@ -1,0 +1,256 @@
+RUN: git log --pretty=format:"%h %ad%n%s%n%b%n" --date=short > commit-detaljer.txt
+
+
+4281137 2025-09-27
+feat: refactor global styles, add breadcrumb + new gamecard design
+- Global CSS:
+  • justert base font-size med clamp() → 16px–20px
+  • ryddet opp heading-skala (H1–H4) og brødtekst
+  • gjort H2 mindre (28px max) for bedre lesbarhet
+  • oppdatert footer/nav typografi
+
+- Breadcrumb:
+  • ny Breadcrumb.astro-komponent som sporer Astro.url.pathname
+  • alltid inkluderer "Forside"
+  • viser slug, og henter frontmatter.title for spill-sider
+  • stil: subtil (14px), blå lenker, current side i sort
+
+- GameCard:
+  • fjernet cover-bilde (kortene er nå tekstbaserte)
+  • lagt til subtitle med mer fokus (sort, mindre enn tittel)
+  • nytt felt `intro` (kort pitch/mikroinnlegg, max 255 tegn)
+  • viser chips som før (players, time, difficulty, tags)
+
+- Content schema:
+  • oppdatert config.ts med nytt felt `intro`
+
+- Diverse:
+  • rettet type-feil i Breadcrumb (href er nå optional)
+  • små stiljusteringer (date-tag, chip, hover states)
+
+
+fd3b276 2025-09-27
+feat(spill): legg til dynamiske spill-sider med type-sikring
+- Opprettet `src/pages/spill/[slug].astro` med `getStaticPaths()` for å generere en side pr. spill
+- Bruker `CollectionEntry<"games">` for å få riktig typing i både `spill.astro`, `GameCard.astro` og `[slug].astro`
+- La til default-verdier for `tags` for å unngå runtime-feil
+- Sikret at metadata (spillere, tid, vanskelighetsgrad) vises som små chips på kort og detaljsider
+
+
+593da03 2025-09-18
+feat: legg til Hero-komponent og juster header/typografi
+- Opprettet ny Hero.astro som full-bredde seksjon
+  • Tekst til venstre, bilde (valgfritt) til høyre
+  • Responsiv: stacker på mobil
+  • Bryter ut av smal body-spalte, følger headerens 100vw
+- Justert Header padding/margin for mindre luft over
+- Optimalisert heading-stiler (H1–H4) i global.css
+  • Justerte clamp-verdier, line-height og letter-spacing
+  • Sikret konsistente maks/min str. på desktop og mobil
+- Ryddet opp i nav / hamburger og plassert hjerte øverst til høyre
+- Footer oppdatert til å ligge horisontalt på desktop og vertikalt på mobil
+- Forberedt støtte for versjonslogg i footer
+
+
+b5ae37d 2025-09-17
+fix: div
+
+
+5be5d04 2025-09-07
+feat: datetag and pageview
+
+
+d8578af 2025-09-07
+feat: counter for website
+
+
+c7c22c5 2025-09-04
+chore: fixed small src
+
+
+840b4c1 2025-08-31
+Chose: Refactoring
+
+
+839efd0 2025-08-31
+chore: redeploy
+
+
+bdb584c 2025-08-31
+fix(posts): riktig sti til MarkdownPostLayout i første.md
+
+
+3ef0f51 2025-08-31
+fix: rettet sti til MarkdownPostLayout i første bloggpost
+
+
+c669dcc 2025-08-31
+fix(posts): correct layout path for MarkdownPostLayout
+
+
+2f6a9f2 2025-08-31
+fix: rettet layout-sti i første blogginnlegg og ryddet i oppsettet
+- Oppdatert `første.md` til å bruke korrekt sti for MarkdownPostLayout.astro
+
+
+62d03fb 2025-08-31
+git commit -m "feat(nav): add responsive hamburger menu with text option, hide separators on mobile, align links horizontally on desktop
+- Implemented hamburger component (with optional visible/screenreader text)
+- Added toggleable .expanded state for mobile nav
+- Hid '|' separators on mobile, kept on desktop
+- Styled nav-links as column on mobile and flex row on desktop
+- Added option to show/hide 'Meny' label on hamburger
+- Improved accessibility with aria attributes and sr-only class"
+
+
+bcc13af 2025-08-27
+chore: prettier write
+
+
+34ba4c0 2025-08-27
+feat: improve site typography, security, and layout handling
+- Added responsive typography system:
+  - H1 max 50px (scales down on tablet/mobile)
+  - H2 max 36px (scales down to ~24px on mobile)
+  - H3 max 28px (scales down to ~19px on mobile)
+  - Implemented with rem + clamp for consistent scaling
+- Updated BaseLayout.astro:
+  - Ensured external links open in new tab with rel="noopener noreferrer"
+  - Added inline script to apply link security globally
+- Clarified placement of layout (BaseLayout.astro) for markdown blog posts
+- Discussed options for applying layouts to all posts (frontmatter vs dynamic [slug].astro)
+- Refined global.css:
+  - Times as global font
+  - Responsive root font-size scaling (16 → 18 → 20px)
+  - Preserved H1 colors, body/container styling, and nav-links
+
+
+f558dd6 2025-08-26
+feat(site): refactor nav and layout, improve structure and formatting
+- Refactored BaseLayout.astro to hold html/head/body, header, footer
+- Wrapped <slot /> in <main> for semantic structure and accessibility
+- Added title prop to BaseLayout and passed unique titles from index/other pages
+- Cleaned up index.astro to only contain unique page content
+- Ensured nav is always visible on small screens (removed display:none without hamburger)
+- Fixed responsive nav: vertical on mobile, horizontal on desktop
+- Added :focus and :hover states for accessible navigation
+- Learned and documented slot usage, props, and how to “pass page title”
+- Verified Prettier setup and usage for consistent formatting
+- Practiced VS Code shortcuts (mark line, run Prettier, etc.)
+
+
+1b9fd94 2025-08-25
+chore: format code with Prettier
+
+
+20245da 2025-08-25
+feat: vis total databruk på siden i KB med forklarende tekst
+Legger til en komponent som måler hvor mye data nettleseren laster
+(HTML, CSS, JS, bilder m.m.) og viser dette på siden.
+Oppdatert teksten slik at den forklarer tydelig hva som måles,
+i stedet for tekniske begreper som "sidevekt" og "HTML".
+
+
+421cc59 2025-08-25
+fix: correct file casing to Navigation.astro
+
+
+28eee8e 2025-08-25
+Rename navigation.astro to Navigation.astro
+
+
+8bb7788 2025-08-25
+chore: trigger redeploy
+
+
+ebd6970 2025-08-25
+chore: force redeploy
+
+
+061576b 2025-08-25
+bug fix case sensitive things
+
+
+32054f7 2025-08-25
+mer css og footer og riktig sosiale medier
+
+
+888af3d 2025-08-25
+CSS global
+
+
+0e3cd79 2025-08-24
+lagt inn enkel frontmatter og javascript eller
+
+
+192e2c8 2025-08-24
+Merge branch 'main' of https://github.com/megselvtonie/megselvtonie
+
+
+5776dec 2025-08-24
+added github actions gjennom yml and added custom domain in CNAME public
+
+
+fe8a8cd 2025-08-24
+Delete CNAME
+
+
+dc86f59 2025-08-24
+Update CNAME
+
+
+ebef349 2025-08-24
+Create CNAME
+
+
+d2f3b3c 2025-08-24
+added first blog post
+
+
+203bd8f 2025-08-24
+added first blog post
+
+
+1caf7c4 2025-08-24
+Added two new pages - about and blog
+
+
+d0ab60d 2025-08-24
+Merge branch 'main' of https://github.com/megselvtonie/megselvtonie
+
+
+7cd7ca6 2025-08-24
+refactor: update README.md to remove Astro Starter Kit content and add personalized greeting
+
+
+225943d 2025-08-24
+Update README.md
+
+
+2a4d6a7 2025-08-24
+Update README.md
+
+
+2cafa00 2025-08-24
+Update README.md
+removed a line...
+
+5af5a9e 2025-08-24
+Update README.md
+Had to change the README file again
+
+8777db0 2025-08-24
+Update README.md
+Tried to merge the README files in my VS and on github to pull
+
+0909ab7 2025-08-24
+initial commit
+
+
+77149fb 2025-08-23
+Initial commit
+
+
+deaf0f6 2025-08-23
+Initial commit from Astro
+
