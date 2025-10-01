@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+type Recipe = CollectionEntry<"oppskrifter">;
+
+export async function getStaticPaths() {
+  const recipes: Recipe[] = await getCollection("oppskrifter");
+  return recipes.map((recipe) => ({
+    params: { slug: recipe.slug },
+    props: { recipe },
+  }));
+}
+
+const { recipe } = Astro.props as { recipe: Recipe };
+const { Content } = await render(recipe);
+
+const { title, date, cover, tags = [] } = recipe.data;
+const pageTitle = `${title} – Oppskrift`;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <article>
+    <h1>{title}</h1>
+    {date && <p><em>Publisert: {new Date(date).toLocaleDateString("no-NO", { year: 'numeric', month: 'long', day: 'numeric' })}</em></p>}
+    {cover && <img src={cover} alt={title} />}
+    {tags.length > 0 && <p>Tags: {tags.join(", ")}</p>}
+    <Content />
+    <p><a href="/kokebok">← Tilbake til kokeboka</a></p>
+  </article>
+</BaseLayout>
+<style>
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+</style>    

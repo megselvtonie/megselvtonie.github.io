@@ -3,27 +3,45 @@ const { datetime } = Astro.props;
 const d = new Date(datetime);
 
 const now = new Date();
-const diffMs = now.getTime() - d.getTime();
-const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-const diffMonths =
-  (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
-const diffYears = now.getFullYear() - d.getFullYear();
 
 const timeStr = d.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" });
 
+
+
+
 function formatLabel() {
+  // Sammenlign kun dato (ikke klokkeslett)
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const uploadDay = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  const diffMs = today.getTime() - uploadDay.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  const diffMonths =
+    (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
+  const diffYears = now.getFullYear() - d.getFullYear();
+
   if (diffDays === 0) return `skrevet i dag kl. ${timeStr}`;
-  if (diffDays === 1) return `oppdatert i går kl. ${timeStr}`;
-  if (diffDays === 2) return `satt opp i forgårs`;
+  if (diffDays === 1) return `satt opp i går kl. ${timeStr}`;
+  if (diffDays === 2) return `satt opp i forgårs kl. ${timeStr}`;
   if (diffDays < 7) {
     const weekday = d.toLocaleDateString("no-NO", { weekday: "long" });
-    return `lagt ut ${weekday}`;
+    return `lagt ut ${weekday} kl. ${timeStr}`;
   }
-  if (diffDays < 14) return `for ${diffDays} dager siden`;
+  if (diffDays === 14) return `for ${diffDays} dager siden kl. ${timeStr}`;
+  if (diffDays < 31) {
+    const weekday = d.toLocaleDateString("no-NO", { weekday: "long" });
+    const monthDay = d.toLocaleDateString("no-NO", { day: "2-digit", month: "long" });
+    return `${weekday} ${monthDay} kl. ${timeStr}`;
+  }
+    if (diffDays < 364) {
+    const weekday = d.toLocaleDateString("no-NO", { weekday: "long" });
+    const monthDay = d.toLocaleDateString("no-NO", { day: "2-digit", month: "long" });
+    return `${weekday} ${monthDay} kl. ${timeStr}`;
+  }
   if (diffMonths === 1) return "for 1 måned siden";
   if (diffMonths < 12) return `for ${diffMonths} måneder siden`;
   if (diffYears === 1) return "i fjor";
-  return `${d.toLocaleDateString("no-NO")} kl. ${timeStr}`;
+  return `${d.toLocaleDateString("no-NO", { day: "2-digit", month: "2-digit", year: "numeric" })} kl. ${timeStr}`;
 }
 
 const label = formatLabel();

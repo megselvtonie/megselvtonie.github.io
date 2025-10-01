@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageView from '../components/PageView.astro';
 import DateTag from '../components/DateTag.astro';
 const pageTitle = "megselv→tonie";
+
+import PageView from '../components/PageView.astro';
 ---
 <BaseLayout pageTitle={pageTitle}>
 
@@ -16,17 +17,84 @@ const pageTitle = "megselv→tonie";
 <p>
   Denne nettsiden har jeg bygget helt fra bunnen. Jeg skriver i HTML og CSS, og har lært meg å bruke JavaScript der jeg må – som i menyen som åpner og lukker seg på mobil. Den er jeg veldig stolt av, og jeg brukte ca 5 timer på å sette den opp.
 <p>
-  NYESTE NYTT GUTTAAA! <DateTag datetime="2025-09-07T19:06" />
+  NYESTE NYTT GUTTAAA!  <DateTag datetime="2025-09-07T19:06" />
   </p>
   <PageView />
 
   <section class="commit-log">
   <section class="changelog">
-  <h1>📜 Changelog <DateTag datetime="2025-09-28T11:27" /></h1>
+  <h1>📜 Changelog <DateTag datetime="2025-09-28T11:27" /> </h1>
+<h3>29. september – 1. oktober</h3>
+<ul>
+  <li><strong>Kortspillbibliotek</strong><br />
+    • Fikset feil i <code>GameCard.astro</code> og <code>[slug].astro</code> (destructuring, tags og anbefalt-merke).<br />
+    • Kortlayout oppdatert: horisontale på desktop, 1–2 kolonner på mobil/tablet.<br />
+    • Spill-sidene viser nå metadata som chips (spillere, tid, vanskelighetsgrad, anbefalt, tags) og lenke tilbake til oversikten.
+  </li>
+  <li><strong>Typografi og stil</strong><br />
+    • Oppdatert <code>global.css</code> med tettere line-height for H1–H4.<br />
+    • Justert spacing mellom overskrifter og listepunkter.<br />
+    • Eksperimentert med heading-hierarki (f.eks. hoppe fra H1 til H3) og små tekster med <code>&lt;small&gt;</code>.
+  </li>
+  <li><strong>Dato- og tidskomponenter</strong><br />
+    • <code>DateTag.astro</code>: flere varianter (i dag, i går, for X dager/uker siden, kortformat «søn 07 sep 18.25»).<br />
+    • <code>TimeCounter.astro</code>: teller utviklingstid og morsomme sammenligninger (hundeår, døde lapphunder, måneturer).
+  </li>
+  <li><strong>Breadcrums og navigasjon</strong><br />
+    • Testet dynamiske breadcrumbs, men valgt enklere løsning med manuell tittelstyring (<code>export const breadcrumb</code> i sidene).
+  </li>
+  <li><strong>Content og schema</strong><br />
+    • Ryddet opp i frontmatter (<code>pubDate</code>) for å matche schema.<br />
+    • Rettet feil i oppsett av oppskrifts- og spillfiler (string vs date).
+  </li>
+  <li><strong>Commit-log</strong><br />
+    • Laget logg i HTML-format for å vise endringer dag for dag på nettsiden.
+  </li>
+</ul>
 
   <h2>September 2025</h2>
 <h3>28. september 2025</h3>
+
+<h3>feat: oppdateringer på spill, breadcrumbs og typografi</h3>
 <ul>
+  <li><strong>Breadcrumb:</strong>
+    <ul>
+      <li>Lagt opp til manuell tittelstyring via <code>export const breadcrumb</code> i sidene</li>
+      <li>Eksperimentert med enklere måte å vise egne titler på</li>
+    </ul>
+  </li>
+  <li><strong>GameCard / Spill:</strong>
+    <ul>
+      <li>Justert layout så spillkort er horisontale på desktop, men 1–2 spalter på mobil/tablet</li>
+      <li>Lagt til mer fokus på <em>subtitle</em> (sort tekst, mindre skrift)</li>
+      <li>Meta-tags (spillere, tid, vanskelighetsgrad, anbefalt, tags) rendres som «chips»</li>
+    </ul>
+  </li>
+  <li><strong>Spill-sider ([slug].astro):</strong>
+    <ul>
+      <li>Fikset feil i destructuring og rendering</li>
+      <li>Lagt inn anbefalt-tag og liste for metadata</li>
+      <li>Koblet tilbake til oversikten</li>
+    </ul>
+  </li>
+  <li><strong>CSS / typografi:</strong>
+    <ul>
+      <li>Strammet inn line-height for H1–H4 (mindre avstand mellom headings)</li>
+      <li>Justert spacing mellom listepunkter</li>
+    </ul>
+  </li>
+  <li><strong>Diverse:</strong>
+    <ul>
+      <li>Testet og feilsøkt scriptplassering (<code>menu.js</code> og eksterne lenker)</li>
+      <li>Forberedt breadcrumbs og label-map (under arbeid)</li>
+    </ul>
+  </li>
+</ul>
+
+
+<ul>
+
+  
   <p>15 files changed, 1133 insertions(+), 234 deletions(-)</p>
     <p>Det har vært en krevende dag. Mange små feil (overstyring i global CSS, feil med imports, hjertet som ikke ble rosa, og DateTag som ikke ville vise riktig format). Likevel ser jeg at jeg har tatt store steg – jeg har fått bedre kontroll på komponentene og begynt å skjønne hvordan ting henger sammen i Astro.</p>
   <li><strong>GameCard:</strong> jeg har endelig fått kortene til å se bedre ut. Undertittel har fått mer fokus (sort, mindre font) og meta-tags vises som små chips. Kortene er vertikale på mobil og horisontale på desktop.</li>

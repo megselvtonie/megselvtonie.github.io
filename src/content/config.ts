@@ -1,6 +1,6 @@
 import { defineCollection, z } from "astro:content";
 
-const games = defineCollection({
+const spill = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
@@ -9,11 +9,18 @@ const games = defineCollection({
     time: z.string(),
     difficulty: z.enum(["lett", "middels", "avansert"]),
     tags: z.array(z.string()).optional(),
-    recommendedByMe: z.boolean().optional(),
     cover: z.string().optional(),
-    intro: z.string().max(255).optional(), // 🔥 nytt felt: mikroinnlegg
   }),
 });
 
-export const collections = { games };
-// 🔥 nytt felt: mikroinnlegg
+const oppskrifter = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    date: z.date().optional(), // 👈 bruker Date, ikke string
+    cover: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
+export const collections = { spill, oppskrifter };

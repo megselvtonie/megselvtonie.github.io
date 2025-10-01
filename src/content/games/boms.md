@@ -14,7 +14,7 @@ intro: "Klarer du å bli ferdig med hånden din først blir du president, da få
 
 - **Kortutdeling:** Alle kort deles ut. Går det ikke opp, får noen flere kort
 
-### Rangering av kort
+## Rangering av kort
 
 ♥ ♦ ♣ ♠
 
@@ -23,7 +23,7 @@ intro: "Klarer du å bli ferdig med hånden din først blir du president, da få
 - ♣3 kan slå ut hele bunken, uansett kombinasjon.
 - Hvis du sitter igjen med kløver 3 til slutt, blir du boms.
 
-### Spilleregler
+## Spilleregler
 
 Spillet går over ulike runder som stikkes ut.
 
