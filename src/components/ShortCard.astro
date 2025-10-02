@@ -1,0 +1,41 @@
+---
+const { title, body } = Astro.props;
+---
+
+<div class="short-card">
+  <div class="short-tittel">{title}</div>
+  <div class="short-body">{body}</div>
+</div>
+
+<style>
+
+  
+.short-card {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 0;
+  gap: 12px;
+  text-align: left;
+  font-size: 20px;
+  color: #000;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-top: 1px solid #000; 
+ /* alltid linje over */
+}
+
+.short-tittel {
+  align-self: stretch;
+  letter-spacing: 0.05em;
+  line-height: 133%;
+}
+
+.short-body {
+  align-self: stretch;
+  font-size: 14px;
+  line-height: 133%;
+}
+</style>

@@ -1,0 +1,22 @@
+---
+import ShortCard from "./ShortCard.astro";
+
+const { cards = [] } = Astro.props;
+// cards = array med {title, body}
+---
+
+<section class="short-cards">
+  {cards.length === 0 ? (
+    <p>Ingen kort tilgjengelig.</p>
+  ) : (
+    cards.map(c => <ShortCard title={c.title} body={c.body} />)
+  )}
+</section>
+
+<style>
+.short-cards {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #000; /* linje nederst */
+}
+</style>

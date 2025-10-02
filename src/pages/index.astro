@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DateTag from '../components/DateTag.astro';
+import ShortCards from '../components/ShortCards.astro';
 const pageTitle = "megselv→tonie";
 
 import PageView from '../components/PageView.astro';
@@ -20,6 +21,10 @@ import PageView from '../components/PageView.astro';
   NYESTE NYTT GUTTAAA!  <DateTag datetime="2025-09-07T19:06" />
   </p>
   <PageView />
+<ShortCards cards={[
+  { title: "ShortCard", body: "Skal prøve å bruke denne som en byline" },
+  { title: "ShortCards", body: "Dette er andre card" }
+]} />
 
   <section class="commit-log">
   <section class="changelog">

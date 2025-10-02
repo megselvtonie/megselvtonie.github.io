@@ -1,0 +1,69 @@
+/* =======================
+   Navigasjon & Hamburger
+   ======================= */
+
+/* Hamburger-knapp (skjult på desktop) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tekst ved siden av hamburgeren */
+.menu-text {
+  display: none; /* vises kun på mobil */
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* Navigasjonslenker */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0.25rem 0 1rem;
+  padding: 0;
+}
+
+.nav-links a.nav-active {
+  font-weight: bold;
+}
+
+/* =======================
+   Responsivt
+   ======================= */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* vis hamburger på mobil */
+  }
+
+  .nav-links {
+    display: none; /* skjules som default */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .nav-links.expanded {
+    display: flex; /* vises når .expanded toggles */
+  }
+
+  .menu-text {
+    display: inline; /* vis menytekst på mobil */
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-links {
+    flex-direction: row; /* liggende meny på desktop */
+    gap: 1rem;
+  }
+}
