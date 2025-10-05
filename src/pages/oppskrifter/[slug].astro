@@ -20,25 +20,52 @@ const pageTitle = `${title} – Oppskrift`;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <article>
+  <article class="content-section">
     <h1>{title}</h1>
-    {date && <p><em>Publisert: {new Date(date).toLocaleDateString("no-NO", { year: 'numeric', month: 'long', day: 'numeric' })}</em></p>}
-    {cover && <img src={cover} alt={title} />}
-    {tags.length > 0 && <p>Tags: {tags.join(", ")}</p>}
+
+    {date && (
+      <p>
+        <em>
+          Publisert:{" "}
+          {new Date(date).toLocaleDateString("no-NO", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </em>
+      </p>
+    )}
+
+    {cover && <img src={cover} alt={title} loading="lazy" />}
+
+    {tags.length > 0 && (
+      <p>
+        <strong>Tags:</strong> {tags.join(", ")}
+      </p>
+    )}
+
     <Content />
-    <p><a href="/kokebok">← Tilbake til kokeboka</a></p>
+
+    <p>
+      <a href="/kokebok">← Tilbake til kokeboka</a>
+    </p>
   </article>
 </BaseLayout>
-<style>
-  article {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
-  }
 
-  img {
-    max-width: 100%;
-    height: auto;
-    margin: 1rem 0;
-  }
-</style>    
+<style>
+
+/* Lokal layout for oppskriftssider */
+article.content-section {
+  max-width: 800px;
+  line-height: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+article.content-section img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+</style>

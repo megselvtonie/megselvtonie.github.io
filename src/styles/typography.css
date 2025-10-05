@@ -124,6 +124,7 @@ article ol:not(.meta-list) {
 
 .post-body li,
 article li:not(.meta-list li) {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   line-height: 1.6;
   text-indent: -1em;

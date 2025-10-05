@@ -1,0 +1,41 @@
+/* ==========================================================================
+   HOW TO: UTVIDE STILARKET
+   --------------------------------------------------------------------------
+   Dette stilarket brukes for seksjoner som "spill" og "kokebok".
+   Grunnstilen (Helvetica, spacing, tekstfarge) gjelder alle elementer
+   med klassen .content-section.
+
+   Du kan utvide designet for en bestemt seksjon ved å legge til en
+   ekstra klasse på samme element, f.eks.:
+
+       <div class="content-section games"> … </div>
+       <div class="content-section recipes"> … </div>
+
+   Deretter lager du egne regler her, som bygger videre på grunnstilen:
+
+       .content-section.games { bakgrunnsfarge, border-radius, osv. }
+       .content-section.recipes { varm fargepalett, annen heading-farge, osv. }
+
+   Tips:
+   - Hold alle utvidelser samlet i denne fila for oversikt.
+   - Bruk tydelige kommentarer ( SPILL) mellom seksjoner.
+   - Ikke importer denne fila globalt — kun på sidene som bruker den.
+   ========================================================================== */
+
+/* content-sections.css */
+/* Brukes for spill + kokebok + lignende innholdssider */
+
+.content-section p,
+.content-section li,
+.content-section em {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* === Bilder === */
+.content-section img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.25rem auto;
+  border-radius: 8px;
+}

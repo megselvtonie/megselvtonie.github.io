@@ -29,6 +29,20 @@ const { ingredients = [] } = Astro.props;
   </div>
 </section>
 
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    const checkboxes = document.querySelectorAll(".circle");
+    checkboxes.forEach((cb, i) => {
+      const key = `recipe-step-${i}`;
+      cb.checked = localStorage.getItem(key) === "true";
+      cb.addEventListener("change", () => {
+        localStorage.setItem(key, cb.checked);
+      });
+    });
+  });
+</script>
+
+
 <style>
 .ingredient-section {
   margin: 2rem 0;

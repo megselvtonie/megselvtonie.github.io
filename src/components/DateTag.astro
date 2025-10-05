@@ -1,13 +1,17 @@
 ---
+/**
+ * DateTag.astro
+ * Viser tidsstempel i lesbart norsk format.
+ * 
+ * Bruk:
+ *   <DateTag datetime="2025-09-17T21:45" />
+ */
 const { datetime } = Astro.props;
 const d = new Date(datetime);
 
 const now = new Date();
 
 const timeStr = d.toLocaleTimeString("no-NO", { hour: "2-digit", minute: "2-digit" });
-
-
-
 
 function formatLabel() {
   // Sammenlign kun dato (ikke klokkeslett)

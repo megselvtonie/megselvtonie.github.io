@@ -18,11 +18,25 @@ const { text, altText } = Astro.props;
   <label class="step-box">
     <input type="checkbox" class="circle" />
     <p class="text">
-      {text}
       {altText && <span class="alt-text"> {altText}</span>}
+      {text}
     </p>
   </label>
 </div>
+
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    const checkboxes = document.querySelectorAll(".circle");
+    checkboxes.forEach((cb, i) => {
+      const key = `recipe-step-${i}`;
+      cb.checked = localStorage.getItem(key) === "true";
+      cb.addEventListener("change", () => {
+        localStorage.setItem(key, cb.checked);
+      });
+    });
+  });
+</script>
+
 
 <style>
 .recipe-step {
