@@ -1,5 +1,6 @@
 ---
 // filepath: /Users/tonje/megselvtonie/src/components/Breadcrumb.astro
+
 import { getCollection } from "astro:content";
 // Type for breadcrumb element
 type Crumb = { label: string; href?: string };
@@ -7,7 +8,7 @@ type Crumb = { label: string; href?: string };
 const { pathname } = Astro.url;
 const parts = pathname.split("/").filter(Boolean);
 
-let games = [];
+let games: any[] = [];
 if (parts[0] === "spill") {
   games = await getCollection("games");
 }
@@ -15,7 +16,7 @@ if (parts[0] === "spill") {
 const labelMap: Record<string, string> = {
   about: "Om meg",
   nettsiden: "Om denne nettsiden",
-  wip: "Werk in progress",
+  wip: "Werk i progress",
   spill: "Spill<3",
   blog: "Blogg1"
 };

@@ -1,0 +1,100 @@
+---
+/**
+ * IngredientList.astro
+ * Runde avhukingsbokser for ingredienser.
+ * Viser automatisk overskriften “Ingredienser”.
+ *
+ * Bruk:
+ * <IngredientList ingredients={[
+ *   "2 egg",
+ *   "3 dl melk",
+ *   "2 dl hvetemel",
+ *   "1 ts salt",
+ *   "smør til steking"
+ * ]} />
+ */
+const { ingredients = [] } = Astro.props;
+---
+
+<section class="ingredient-section">
+  <p class="ingredient-title">Ingredienser</p>
+
+  <div class="ingredient-list">
+    {ingredients.map((item: string) => (
+      <label class="ingredient">
+        <input type="checkbox" class="circle" />
+        <span>{item}</span>
+      </label>
+    ))}
+  </div>
+</section>
+
+<style>
+.ingredient-section {
+  margin: 2rem 0;
+}
+
+.ingredient-title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: clamp(1.25rem, 1vw, 1.5rem); /* ca 20–24px */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+/* Listeoppsett */
+.ingredient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ingredient {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Runde avkrysningsbokser */
+input.circle {
+  appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Når avkrysset */
+input.circle:checked {
+  background: #d11305;
+  border-color: #d11305;
+}
+
+input.circle:checked::after {
+  content: "";
+  position: absolute;
+  inset: 0.28rem;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* 🎨 Teksteffekt ved avhuking */
+input.circle:checked + span {
+  color: #777;
+  text-decoration: line-through;
+  transition: color 0.2s ease;
+}
+
+span {
+  user-select: none;
+}
+</style>
