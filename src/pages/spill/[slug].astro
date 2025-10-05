@@ -7,7 +7,7 @@ type Game = CollectionEntry<"games">;
 export async function getStaticPaths() {
   const games: Game[] = await getCollection("games");
   return games.map((game) => ({
-    params: { slug: game.slug },
+    params: { slug: game.id },
     props: { game },
   }));
 }
