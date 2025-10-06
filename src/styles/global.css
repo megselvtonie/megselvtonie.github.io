@@ -43,3 +43,10 @@ a:hover {
 .card-spade {
   color: black;
 }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #000; /* valgfritt: gir sort ramme slik du ønsket */
+}

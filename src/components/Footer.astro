@@ -9,9 +9,7 @@ import Social from "../components/Social.astro";
   <Social platform="instagram"  username="megselvtonie" compact class="item" />
   <Social platform="github"     username="megselvtonie" compact class="item" />
 
-  <!-- E-post genereres med JS -->
   <span id="email" class="item email"></span>
-
   <a href="#top" class="item back-to-top">↑ Til toppen</a>
 </footer>
 
@@ -28,17 +26,20 @@ import Social from "../components/Social.astro";
   .footer {
     display: flex;
     flex-direction: row;
-    justify-content: center;   /* midtstilt på desktop */
+    justify-content: center;
     align-items: center;
     gap: 1rem;
 
-    width: 100%;
+    width: 100vw;                    /* full bredde */
+    margin-left: calc(-50vw + 50%);  /* trekker den ut av containeren */
+    
     padding: 0.5rem 0;
-    border-top: 0.2rem solid #000;
-
-    font-size: 0.75rem; /* 12px */
+    border-top: 0.1rem solid #000;   /* streken går helt ut */
+height: 1.5rem;;
+    font-size: 0.75rem;
     line-height: 1.4;
     color: #000;
+    background: #fff5d1;             /* match bakgrunnsfargen om du vil */
   }
 
   .item {
@@ -55,17 +56,30 @@ import Social from "../components/Social.astro";
   }
 
   .email {
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.75rem;
     font-style: italic;
   }
 
-  /* === Mobil (vertikal og venstrestilt) === */
+  /* === Desktop: gjør den sticky nederst === */
+  @media (min-width: 601px) {
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  /* === Mobil: vanlig flow, venstrestilt === */
   @media (max-width: 600px) {
     .footer {
+      position: static;              /* ikke sticky på mobil */
       flex-direction: column;
-      justify-content: flex-start;
       align-items: flex-start;
+      justify-content: flex-start;
       gap: 0.25rem;
+      margin-left: 0;                /* unngå side-scroll */
+      width: 100%;
     }
   }
 </style>

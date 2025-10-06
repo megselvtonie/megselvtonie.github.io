@@ -5,7 +5,7 @@ players: "3–5p / ★4p"
 time: "20–30m"
 difficulty: "lett"
 tags: ["kortspill ", "på hytta ", "party"]
-pubDate: 2025-09-28
+pubDate: "2025-09-28"
 recommendedByMe: true
 intro: "Klarer du å bli ferdig med hånden din først blir du president, da får du flere fordeler i neste spill. Men pass på, de andre spillerne kan bli lei av at du alltid vinner. Klarer du å holde fast i rollen din, eller vil de andre klare å felle deg!"
 ---
@@ -52,3 +52,10 @@ Etter utdeling, men før spillet starter:
 - ♣3 trenger ikke gis videre ved kortbytte.
 - Viseboms gir sitt **beste kort** til visepresidenten.
 - Boms gir sine **to beste kort** til presidenten.
+
+Games
+Gul bolle
+hurtigtoget
+løgn
+rummy
+smash

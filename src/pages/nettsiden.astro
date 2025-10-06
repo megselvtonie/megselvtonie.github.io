@@ -1,38 +1,50 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Om → Nettsiden min";
 export const breadcrumb = "Om denne nettsiden";
 ---
+
 <BaseLayout pageTitle={pageTitle}>
   <h1>Denne nettsiden er skrevet for hånd</h1>
 
   <h2>Hvorfor?</h2>
   <p>
-    Jeg vil eie egen kode. Ha full kontroll på utseendet </p>
-<p> Jeg vil lære mer om hvordan nettsider er bygget opp. </p>
-<p> Jeg vil ha en enkel nettside som er rask å laste og enkel å vedlikeholde. </p>
-<p> Jeg vil ha en nettside som er lett å oppdatere og utvide.
+    Jeg vil eie min egen kode og ha full kontroll på hvordan alt ser ut.
+  </p>
+  <p>
+    Jeg vil lære mer om hvordan nettsider er bygget opp, og forstå hvordan
+    HTML, CSS og JavaScript fungerer sammen.
+  </p>
+  <p>
+    Jeg vil ha en enkel nettside som er rask å laste, lett å vedlikeholde og enkel å utvide etter hvert som jeg lærer mer.
+  </p>
+
   <h2>Slik fungerer en nettside</h2>
   <p>
-    Kort sagt er HTML skjelettet og innholdet – den bestemmer hva som finnes på siden: overskrifter, bilder og knapper.  
-    CSS bestemmer hvordan alt ser ut: farger, fonter, størrelser og plassering.  
-    JavaScript brukes til interaktivitet, for eksempel menyen som åpner og lukker seg på mobil.
+    Kort sagt er <strong>HTML</strong> skjelettet – den bestemmer hva som finnes på siden: overskrifter, bilder og knapper.  
+    <strong>CSS</strong> styrer hvordan alt ser ut: farger, fonter, størrelser og plassering.  
+    <strong>JavaScript</strong> gir liv til nettsiden, som for eksempel menyen som åpner og lukker seg på mobil.
   </p>
 
   <h3>Hva jeg har brukt</h3>
   <ul>
-    <li><strong>Astro</strong> – rammeverket.</li>
-    <li><strong>Node.js</strong> – kjøretidsmiljø for å kjøre Astro.</li>
-    <li><strong>npm</strong> – pakkebehandler for å installere verktøy.</li>
-    <li><strong>Visual Studio Code</strong> – teksteditor.</li>
-    <li><strong>GitHub</strong> – for å lagre og dele koden.</li>
-    <li><strong>Markdown</strong> – for å skrive innhold.</li>
+    <li><strong>Astro</strong> – rammeverket som binder alt sammen.</li>
+    <li><strong>Node.js</strong> – miljøet som kjører Astro.</li>
+    <li><strong>npm</strong> – for å installere verktøy og pakker.</li>
+    <li><strong>Visual Studio Code</strong> – teksteditoren jeg bruker.</li>
+    <li><strong>GitHub</strong> – for å lagre og publisere koden min.</li>
+    <li><strong>Markdown</strong> – for å skrive innhold som blogg og oppskrifter.</li>
   </ul>
 
   <h2>Litt historie</h2>
   <p>
-    Første gangen jeg lærte om HTML og CSS var i 2015, på NTNU. Jeg syntes det var vanskelig, 
-    og bestemte meg for at jeg ikke skulle lære mer. Likevel lærte jeg nok til å forstå hvordan nettsider er bygget opp.
+    Første gang jeg lærte om HTML og CSS var i 2015, på NTNU.
+    Jeg syntes det var vanskelig og bestemte meg for at jeg ikke skulle lære mer.
+    Men jeg lærte akkurat nok til å forstå hvordan nettsider henger sammen.
+  </p>
+  <p>
+    Nå – mange år senere – lager jeg min egen nettside for å lære mer i praksis.
+    Det har tatt mange timer, men jeg blir flinkere for hver dag.
   </p>
 </BaseLayout>

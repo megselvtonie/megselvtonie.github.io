@@ -6,8 +6,10 @@ type Game = CollectionEntry<"games">;
 
 export async function getStaticPaths() {
   const games: Game[] = await getCollection("games");
+
   return games.map((game) => ({
-    params: { slug: game.id },
+    // bruk id som "slug" → men fjern mappenavnet slik at path blir /spill/boms
+    params: { slug: game.id.replace("games/", "").replace(".md", "") },
     props: { game },
   }));
 }
@@ -28,54 +30,54 @@ const {
 
 const pageTitle = `${title} – Kortspill`;
 ---
+
 <BaseLayout pageTitle={pageTitle}>
   <article>
     <h1>{title}</h1>
     {subtitle && <p><em>{subtitle}</em></p>}
-   <ul class="meta-list">
-  <li>{players}</li>
-  <li>{time}</li>
-  <li>{difficulty}</li>
-</ul>
+
+    <ul class="meta-list">
+      <li>{players}</li>
+      <li>{time}</li>
+      <li>{difficulty}</li>
+    </ul>
 
     <div class="tags">
       {recommendedByMe && <span class="chip chip--rec">anbefalt</span>}
       {tags.map((t: string) => <span class="chip">{t}</span>)}
     </div>
+
     <Content />
-    <p><a href="/spill">← Tilbake til oversikten</a></p>
+    <p><a href="/spilloteket">← Tilbake til oversikten</a></p>
   </article>
 
   <style>
-  .meta-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  padding: 0;
-  margin: 0.5rem 0 1rem 0;
-  list-style: none; /* fjern default */
-}
+    .meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      padding: 0;
+      margin: 0.5rem 0 1rem 0;
+      list-style: none;
+    }
 
-.meta-list li {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  position: relative;
-  padding-left: 1rem; /* plass til symbolet */
-}
+    .meta-list li {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      position: relative;
+      padding-left: 1rem;
+    }
 
-/* Egendefinert symbol før hvert li */
-.meta-list li::before {
-  content: "✦"; /* bytt til hva du vil: "•", "▪", "✦", "🎲" ... */
-  position: absolute;
-  left: 0;
-  color: black;
-  font-size: 0.8rem;
-  line-height: 1;
-}
-
-
+    .meta-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: black;
+      font-size: 0.8rem;
+      line-height: 1;
+    }
   </style>
 </BaseLayout>

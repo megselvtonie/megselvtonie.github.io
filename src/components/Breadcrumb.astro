@@ -2,6 +2,7 @@
 // filepath: /Users/tonje/megselvtonie/src/components/Breadcrumb.astro
 
 import { getCollection } from "astro:content";
+import Kokebok from "../pages/kokebok.astro";
 // Type for breadcrumb element
 type Crumb = { label: string; href?: string };
 
@@ -17,8 +18,9 @@ const labelMap: Record<string, string> = {
   about: "Om meg",
   nettsiden: "Om denne nettsiden",
   wip: "Werk i progress",
-  spill: "Spill<3",
-  blog: "Blogg1"
+  spilloteket: "Spilloteket",
+  blog: "Blogg1",
+  kokebok: "Kokeboka",
 };
 
 const items: Crumb[] = [];

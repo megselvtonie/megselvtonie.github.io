@@ -1,5 +1,8 @@
 ---
 title: "Testoppskrift"
+gallery: "public/imgs/oppskrift"
+description: "Dette er en testoppskrift for å teste ut komponenter"
+tags: ["test", "pannekaker"]
 ---
 
 import IngredientList from "../../components/kokebok/IngredientList.astro";
@@ -15,7 +18,11 @@ import RecipeStep from "../../components/kokebok/RecipeStep.astro";
   ]}
 />
 
-<RecipeStep stepNumber="1" text="Pisk egg og melk sammen." />
+<RecipeStep stepNumber="1" text="Pisk egg og melk sammen."
+image={test.src} altText="testbildet"
+
+/>
+
 <RecipeStep stepNumber="2" text="Tilsett mel og salt, og rør til jevn røre." />
 <RecipeStep
   stepNumber="3"
@@ -29,7 +36,6 @@ import RecipeStep from "../../components/kokebok/RecipeStep.astro";
 
 import test from "../../assets/oppskrift/test.jpg";
 
-<img src={test.src} alt="test" />
 Har du husket:
 
 - jlsdkj føaoisdj
