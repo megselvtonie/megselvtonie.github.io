@@ -2,8 +2,9 @@
 import '../styles/global.css';
 import DateTag from '../components/DateTag.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ShortCards from '../components/ShortCards.astro';
 const pageTitle = "Det vktigste → Tonie Wei";
-import Hero from "../components/Hero.astro";
+
 const startDate = new Date("2025-09-07T18:28:00"); // ← startdato
 ---
 <BaseLayout pageTitle={pageTitle}>
@@ -12,20 +13,17 @@ const startDate = new Date("2025-09-07T18:28:00"); // ← startdato
 
 <h1>Dette er VVIP–siden <DateTag datetime="2025-09-17T23:20" /></h1>
 <p class="ingress">Den står for Work In Progress eller Under Arbeid på norsk</p>
+<ShortCards cards={[
+  { title: "Introduksjon", body: "Når jeg lager nettsiden bruker jeg mange timer på å lage komponenter som skal være en del av nettstedet mitt. For å se komponentene legger jeg de her. Når de er klare tar jeg de ut herfra og plasserer de som først planlagt inne på selve nettsiden." },
+  { title: "Under utvikling", body: "Teller som viser hvor mye tid jeg har brukt på nettstedet." }
+]} />
 
-<p>
-  Når jeg lager nettsiden bruker jeg mange timer på å lage komponenter som skal være en del av nettstedet mitt.
-</p>
-<p>
-  For å se komponentene legger jeg de her. Når de er klare tar jeg de ut herfra og plasserer de som først planlagt inne på selve nettsiden.
-</p>
-
-<h2>Under utvikling</h2>
-<p>Teller som viser hvor mye tid jeg har brukt på nettstedet.</p>
 <p>Hva er morsomt å telle i?</p>
 <div id="time-counter">
   Laster teller…
 </div>
+
+
 
 <h4>Media queries for skrift headings under utvikling</h4>
 <ul>

@@ -1,64 +1,80 @@
 ---
-// filepath: /Users/tonje/megselvtonie/src/components/Breadcrumb.astro
-
+// filepath: /src/components/Breadcrumb.astro
 import { getCollection } from "astro:content";
-import Kokebok from "../pages/kokebok.astro";
-// Type for breadcrumb element
+
 type Crumb = { label: string; href?: string };
+
+// Hjelpefunksjon: gjør første bokstav stor
+function capitalizeFirst(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 const { pathname } = Astro.url;
 const parts = pathname.split("/").filter(Boolean);
 
 let games: any[] = [];
+let recipes: any[] = [];
+
 if (parts[0] === "spill") {
   games = await getCollection("games");
 }
-
-const labelMap: Record<string, string> = {
-  about: "Om meg",
-  nettsiden: "Om denne nettsiden",
-  wip: "Werk i progress",
-  spilloteket: "Spilloteket",
-  blog: "Blogg1",
-  kokebok: "Kokeboka",
-};
-
-const items: Crumb[] = [];
-
-// Forside → klikkbar på undersider, men ikke på forsiden
-if (pathname === "/") {
-  items.push({ label: "Forside" });
-} else {
-  items.push({ label: "Forside", href: "/" });
+if (parts[0] === "oppskrifter") {
+  recipes = await getCollection("oppskrifter");
 }
 
-// Bygg breadcrumbs
-parts.forEach((part, i) => {
-  const href = "/" + parts.slice(0, i + 1).join("/");
+// Kart med pene navn og spesielle lenker
+const routes: Record<string, { label: string; href?: string }> = {
+  about: { label: "Om meg" },
+  nettsiden: { label: "Om nettsiden" },
+  wip: { label: "Werk i progress" },
+  spilloteket: { label: "Spilloteket" },
+  kokebok: { label: "Kokeboka" },
+  oppskrifter: { label: "Kokeboka", href: "/kokeboka/" },
+  spill: { label: "Spilloteket", href: "/spilloteket/" },
+};
+
+const items: Crumb[] =
+  pathname === "/" ? [{ label: "Forside" }] : [{ label: "Forside", href: "/" }];
+
+// Bygg breadcrumb
+for (let i = 0; i < parts.length; i++) {
+  const part = parts[i];
   const isLast = i === parts.length - 1;
-
   let label = decodeURIComponent(part);
+  let href: string | undefined;
 
-  // Bruk kartet hvis det finnes en pen tittel
-  if (labelMap[label]) {
-    label = labelMap[label];
+  // Bruk kartet hvis vi kjenner delen
+  if (routes[part]) {
+    label = routes[part].label;
+    href = routes[part].href;
+  } else {
+    // ellers kapitaliser første bokstav
+    label = capitalizeFirst(label);
   }
 
-  // Hvis vi er på en spillside → bruk tittel fra frontmatter
+  // Spill → hent tittel fra frontmatter
   if (parts[0] === "spill" && isLast) {
     const game = games.find((g) => g.slug === part);
     if (game) label = game.data.title;
   }
 
-  if (isLast) {
-    items.push({ label });
-  } else {
-    items.push({ label, href });
+  // Oppskrifter → hent tittel fra frontmatter
+  if (parts[0] === "oppskrifter" && isLast) {
+    const recipe = recipes.find((r) => r.slug === part);
+    if (recipe) label = recipe.data.title;
   }
-});
+
+  // Standard lenke for mellomnivåer
+  if (!href && !isLast) {
+    href = "/" + parts.slice(0, i + 1).join("/") + "/";
+  }
+
+  items.push(isLast ? { label } : { label, href });
+}
 ---
 
-<nav aria-label="Breadcrumb" class="breadcrumb">
+<nav aria-label="Brødsmulesti" class="breadcrumb">
   <ol>
     {items.map((item, i) => (
       <li>
@@ -72,6 +88,9 @@ parts.forEach((part, i) => {
     ))}
   </ol>
 </nav>
+
+
+
 
 <style>
   .breadcrumb {

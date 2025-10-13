@@ -9,23 +9,32 @@ import PageView from '../components/PageView.astro';
 <BaseLayout pageTitle={pageTitle}>
 
 <h1>Det er meg – meg selv Tonie</h1>
-	<h2> Jeg drømte om å bli kokk eller elektriker som barn.<DateTag datetime="2025-08-28T00:06" /></h2>
+	<h2> Gratulerer, du fant nettsiden min<DateTag datetime="2025-08-28T00:06" /></h2>
 
 <p>
-  Denne nettsiden har jeg bygget helt fra bunnen. Jeg skriver i HTML og CSS, og har lært meg å bruke JavaScript der jeg må – som i menyen som åpner og lukker seg på mobil. Den er jeg veldig stolt av, og jeg brukte ca 5 timer på å sette den opp.
+  Denne nettsiden har jeg skrevet for hånd, helt fra bunnen. Jeg skriver i HTML og CSS, og har lært meg å bruke JavaScript der jeg må – som i menyen som åpner og lukker seg på mobil. Den er jeg veldig stolt av, og jeg brukte ca 5 timer på å sette den opp.
 <p>
   NYESTE NYTT GUTTAAA!  <DateTag datetime="2025-09-07T19:06" />
   </p>
   <PageView />
-<ShortCards cards={[
-  { title: "ShortCard", body: "Skal prøve å bruke denne som en byline" },
-  { title: "ShortCards", body: "Dette er andre card" }
-]} />
+
 
   <section class="commit-log">
   <section class="changelog">
   <h1>📜 Changelog <DateTag datetime="2025-09-28T11:27" /> </h1>
-<h3>29. september – 1. oktober</h3>
+<h2>Oppdatering – 6. oktober 2025</h2>
+  <h3>feat: oppdatert breadcrumb-struktur, forbedret footer-stil og spill-navigasjon.</h3>
+  <p> 21 files changed, 149 insertions(+), 260 deletions(-)</p>
+  <ul>
+    <li>Fjernet utdaterte spillfiler og lagt til plassholder for kommende spill.</li>
+    <li>Oppdatert breadcrumb-logikken slik at den viser nye navigasjonsstier.</li>
+    <li>Forbedret utseendet på footeren for mer visuell helhet.</li>
+    <li>Justert navigasjonslenker slik at de peker til den nye spilloversikten.</li>
+    <li>Rettet små skrivefeil og formateringsfeil i ulike innholdsfiler.</li>
+    <li>Refaktorisert komponenten for oppskriftssteg for bedre lesbarhet.</li>
+    <li>Generell opprydding og optimalisering i kodebasen.</li>
+  </ul>
+  <h3>29. september – 1. oktober</h3>
 <p> 16 files changed, 268 insertions(+), 43 deletions(-)</p>
 <ul>
   <li><strong>Kortspillbibliotek</strong><br />

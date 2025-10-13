@@ -1,55 +1,93 @@
-# megselvtonie.github.io
+🌸 megselvtonie.me
 
-Dette er koden bak [megselvtonie.me](https://megselvtonie.me) – min personlige nettside laget med [Astro](https://astro.build/) og publisert på GitHub Pages.
+Laget med KI, justert så vidt av meg.
 
-## ✨ Hva nettsiden inneholder
+Dette er koden bak megselvtonie.me
+— min personlige nettside.
+Jeg bygger alt for hånd med Astro
+for å lære, eksperimentere og ha det litt gøy underveis.
 
-- **Forside** med personlige tekster, eksperimenter og små komponenter (dato-tagger, besøkstellere osv.)
-- **Kortspill-bibliotek** (`/spill`) med egne sider for hvert spill. Spillkortene rendres via `GameCard.astro` og har metadata (spillere, tid, vanskelighetsgrad, tags, anbefalt).
-- **Blogg** (`/blog`) og poster skrevet i Markdown med eget layout.
-- **WIP-siden** (`/wip`) som fungerer som testlab for komponenter jeg bygger.
-- **Om-siden** med litt info om meg selv og hvorfor jeg koder denne siden.
+🧩 Om prosjektet
 
-## 🧩 Viktige komponenter
+Nettsiden er statisk og publiseres via GitHub Pages.
+Jeg bruker prosjektet som en digital dagbok der jeg lærer HTML, CSS og JavaScript – og etter hvert også mer avanserte ting som komponenter, collections og MDX.
 
-- `GameCard.astro` → viser spillkort med tittel, undertittel, cover, chips med metadata.
-- `DateTag.astro` → viser publiseringsdatoer i norsk format (f.eks. "i går kl. 18:25", "søn 07 sep 18.25").
-- `PageView.astro` → henter data fra [hitscounter.dev](https://hitscounter.dev) og viser antall besøk.
-- `TimeCounter.astro` → teller hvor mye tid som har gått siden en bestemt dato (og sammenligner med hundeår, måneturer osv.).
-- `Breadcrumb` (eksperimentert med, men endt opp med manuell løsning via `export const breadcrumb`).
+Alt innholdet (spill, oppskrifter, blogginnlegg) skrives i Markdown eller MDX, og Astro bygger det til raske statiske sider.
 
-## 🎨 Design og typografi
+🛠️ Teknologi og struktur
 
-- Global typografi definert i `global.css` med `clamp()` for responsive størrelser.
-- Heading-skala H1–H4 med justert line-height og spacing for bedre lesbarhet.
-- Smal kolonne (`70ch`) for tekstinnhold for å øke lesbarhet.
-- Navigasjon med hamburger på mobil og aktiv-link markering.
-- Footer med sosiale lenker (Letterboxd, Instagram, GitHub) og e-post som genereres i JS.
+Astro 5 – rammeverket for statiske sider
 
-## 🚀 Utvikling
+TypeScript – for bedre kontroll på data og typer
 
-### Lokalt
+GitHub Actions – automatisk deploy til GitHub Pages
 
-For å kjøre prosjektet lokalt:
+Markdown / MDX – for innhold som blogg, spill og oppskrifter
 
-```bash
+CSS – håndskrevet, med fokus på typografi og enkelhet
+
+📂 Mappestruktur
+megselvtonie.github.io/
+├── public/ → bilder, favicon og statiske filer
+├── src/
+│ ├── components/ → gjenbrukbare komponenter (Header, Footer, GameCard …)
+│ ├── content/ → innhold (games, oppskrifter, blogg)
+│ ├── layouts/ → felles layouts
+│ ├── pages/ → faktiske sider (index, about, spill, osv.)
+│ ├── scripts/ → små JS-snutter (meny, visningstellere)
+│ └── styles/ → global og lokal CSS
+└── .github/workflows/ → GitHub Actions for bygg og deploy
+
+🚀 Kjør prosjektet lokalt
+
+Klon repoet:
+
+git clone https://github.com/megselvtonie/megselvtonie.github.io
+cd megselvtonie.github.io
+
+Installer avhengigheter:
+
 npm install
+
+Kjør utviklingsserver:
+
 npm run dev
-```
 
-📖 Commit-regler
+Bygg for produksjon:
 
-Jeg prøver å følge Conventional Commits
-:
+npm run build
 
-feat: for nye funksjoner/innhold
+Forhåndsvis ferdig bygget side:
 
-fix: for feilrettinger
+npm run preview
 
-style: for justeringer i CSS eller typografi
+🧠 Læringsmål
 
-refactor: for større omskrivinger
+Forstå hvordan Astro håndterer collections og layouts
 
-docs: for README eller dokumentasjon
+Lage egne komponenter for spill, oppskrifter og breadcrumbs
 
-chore: for småting, config, CI/CD
+Bruke typografi og designsystem-tenking i CSS
+
+Lære git-arbeidsflyt med commit, branch og deploy
+
+✨ Fremover
+
+Legge til flere oppskrifter i MDX-format
+
+Forbedre spillseksjonen (“Spilloteket”) med bilder
+
+Lage en liten changelog-side med commit-historikk
+
+Finjustere typografi og spacing mellom seksjoner
+
+Utforske små interaktive komponenter i Astro
+
+📫 Kontakt
+
+Tonje F.
+🌐 megselvtonie.me
+
+📸 @megselvtonie
+
+🪷 «Jeg er n00b, men jeg er en n00b som prøver.»
