@@ -9,209 +9,90 @@ import PageView from '../components/PageView.astro';
 <BaseLayout pageTitle={pageTitle}>
 
 <h1>Det er meg – meg selv Tonie</h1>
-	<h2> Gratulerer, du fant nettsiden min<DateTag datetime="2025-08-28T00:06" /></h2>
+	<h2> Gratulerer, du fant nettsiden min</h2>
 
 <p>
+  <DateTag datetime="2025-08-28T00:06" />
   Denne nettsiden har jeg skrevet for hånd, helt fra bunnen. Jeg skriver i HTML og CSS, og har lært meg å bruke JavaScript der jeg må – som i menyen som åpner og lukker seg på mobil. Den er jeg veldig stolt av, og jeg brukte ca 5 timer på å sette den opp.
-<p>
-  NYESTE NYTT GUTTAAA!  <DateTag datetime="2025-09-07T19:06" />
-  </p>
+
   <PageView />
 
 
   <section class="commit-log">
-  <section class="changelog">
-  <h1>📜 Changelog <DateTag datetime="2025-09-28T11:27" /> </h1>
-<h2>Oppdatering – 6. oktober 2025</h2>
-  <h3>feat: oppdatert breadcrumb-struktur, forbedret footer-stil og spill-navigasjon.</h3>
-  <p> 21 files changed, 149 insertions(+), 260 deletions(-)</p>
-  <ul>
-    <li>Fjernet utdaterte spillfiler og lagt til plassholder for kommende spill.</li>
-    <li>Oppdatert breadcrumb-logikken slik at den viser nye navigasjonsstier.</li>
-    <li>Forbedret utseendet på footeren for mer visuell helhet.</li>
-    <li>Justert navigasjonslenker slik at de peker til den nye spilloversikten.</li>
-    <li>Rettet små skrivefeil og formateringsfeil i ulike innholdsfiler.</li>
-    <li>Refaktorisert komponenten for oppskriftssteg for bedre lesbarhet.</li>
-    <li>Generell opprydding og optimalisering i kodebasen.</li>
-  </ul>
-  <h3>29. september – 1. oktober</h3>
-<p> 16 files changed, 268 insertions(+), 43 deletions(-)</p>
-<ul>
-  <li><strong>Kortspillbibliotek</strong><br />
-    • Fikset feil i <code>GameCard.astro</code> og <code>[slug].astro</code> (destructuring, tags og anbefalt-merke).<br />
-    • Kortlayout oppdatert: horisontale på desktop, 1–2 kolonner på mobil/tablet.<br />
-    • Spill-sidene viser nå metadata som chips (spillere, tid, vanskelighetsgrad, anbefalt, tags) og lenke tilbake til oversikten.
-  </li>
-  <li><strong>Typografi og stil</strong><br />
-    • Oppdatert <code>global.css</code> med tettere line-height for H1–H4.<br />
-    • Justert spacing mellom overskrifter og listepunkter.<br />
-    • Eksperimentert med heading-hierarki (f.eks. hoppe fra H1 til H3) og små tekster med <code>&lt;small&gt;</code>.
-  </li>
-  <li><strong>Dato- og tidskomponenter</strong><br />
-    • <code>DateTag.astro</code>: flere varianter (i dag, i går, for X dager/uker siden, kortformat «søn 07 sep 18.25»).<br />
-    • <code>TimeCounter.astro</code>: teller utviklingstid og morsomme sammenligninger (hundeår, døde lapphunder, måneturer).
-  </li>
-  <li><strong>Breadcrums og navigasjon</strong><br />
-    • Testet dynamiske breadcrumbs, men valgt enklere løsning med manuell tittelstyring (<code>export const breadcrumb</code> i sidene).
-  </li>
-  <li><strong>Content og schema</strong><br />
-    • Ryddet opp i frontmatter (<code>pubDate</code>) for å matche schema.<br />
-    • Rettet feil i oppsett av oppskrifts- og spillfiler (string vs date).
-  </li>
-  <li><strong>Commit-log</strong><br />
-    • Laget logg i HTML-format for å vise endringer dag for dag på nettsiden.
-  </li>
-</ul>
-
-  <h2>September 2025</h2>
-<h3>28. september 2025</h3>
-
-<h3>feat: oppdateringer på spill, breadcrumbs og typografi</h3>
-<ul>
-  <li><strong>Breadcrumb:</strong>
+  <article>
+    <h1>📜 Endringslogg <DateTag datetime="2025-09-28T11:27" /></h1>
+<h2>Oktober 2025</h2>
+    <h3>6. oktober</h3>
+    <h4>Forbedringer i navigasjon og design</h4>
     <ul>
-      <li>Lagt opp til manuell tittelstyring via <code>export const breadcrumb</code> i sidene</li>
-      <li>Eksperimentert med enklere måte å vise egne titler på</li>
+      <li>Ryddet opp i gamle spillfiler og lagt til plass for nye spill.</li>
+      <li>Oppdatert navigasjonen slik at den viser riktig sti til sidene.</li>
+      <li>Gjort footeren penere og mer oversiktlig.</li>
+      <li>Rettet små skrivefeil og forbedret lesbarheten i tekstene.</li>
     </ul>
-  </li>
-  <li><strong>GameCard / Spill:</strong>
+  </article>
+
+  <article>
+    <h3>29. september – 1. oktober</h3>
+    <h4>Oppdateringer i spill og typografi</h4>
     <ul>
-      <li>Justert layout så spillkort er horisontale på desktop, men 1–2 spalter på mobil/tablet</li>
-      <li>Lagt til mer fokus på <em>subtitle</em> (sort tekst, mindre skrift)</li>
-      <li>Meta-tags (spillere, tid, vanskelighetsgrad, anbefalt, tags) rendres som «chips»</li>
+      <li>Spillkortene er nå bedre tilpasset både mobil og desktop.</li>
+      <li>Spillsidene viser nyttig informasjon som antall spillere og vanskelighetsgrad.</li>
+      <li>Forbedret overskrifter og mellomrom i tekstene for bedre lesbarhet.</li>
+      <li>Oppdatert datomerking slik at den viser datoer på en mer forståelig måte.</li>
     </ul>
-  </li>
-  <li><strong>Spill-sider ([slug].astro):</strong>
+  </article>
+
+  <article>
+    <h2>September 2025</h2>
+
+    <section>
+      <h3>28. september</h3>
+      <h4>Forbedringer i spillkort og navigasjon</h4>
+      <ul>
+        <li>Spillkortene har fått et nytt design som fungerer bedre på ulike skjermstørrelser.</li>
+        <li>Oppdatert navigasjonen slik at det er enklere å finne frem.</li>
+        <li>Gjort små justeringer i tekststørrelse og mellomrom for bedre lesbarhet.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>27. september</h3>
+      <h4>Oppdateringer i design og struktur</h4>
+      <ul>
+        <li>Forbedret tekststørrelse og mellomrom i hele nettsiden.</li>
+        <li>Lagt til en ny komponent som viser hvor på nettsiden du er.</li>
+        <li>Oppdatert spillkortene med mer informasjon og bedre layout.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>18. september</h3>
+      <h4>Ny hero-seksjon og forbedret typografi</h4>
+      <ul>
+        <li>Lagt til en ny seksjon øverst på siden som fanger oppmerksomheten.</li>
+        <li>Gjort overskrifter og tekst mer lesbare med bedre mellomrom og størrelse.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>7. september</h3>
+      <h4>Ny datomerking og besøksteller</h4>
+      <ul>
+        <li>Oppdatert datomerking slik at den viser «i dag», «i går» eller datoer på en enkel måte.</li>
+        <li>Lagt til en teller som viser hvor mange som har besøkt nettsiden.</li>
+      </ul>
+    </section>
+  </article>
+
+  <article>
+    <h2>August 2025</h2>
+    <h3>23. august</h3>
+    <h4>Starten på prosjektet</h4>
     <ul>
-      <li>Fikset feil i destructuring og rendering</li>
-      <li>Lagt inn anbefalt-tag og liste for metadata</li>
-      <li>Koblet tilbake til oversikten</li>
+      <li>Første versjon av nettsiden ble laget.</li>
     </ul>
-  </li>
-  <li><strong>CSS / typografi:</strong>
-    <ul>
-      <li>Strammet inn line-height for H1–H4 (mindre avstand mellom headings)</li>
-      <li>Justert spacing mellom listepunkter</li>
-    </ul>
-  </li>
-  <li><strong>Diverse:</strong>
-    <ul>
-      <li>Testet og feilsøkt scriptplassering (<code>menu.js</code> og eksterne lenker)</li>
-      <li>Forberedt breadcrumbs og label-map (under arbeid)</li>
-    </ul>
-  </li>
-</ul>
-
-
-<ul>
-
-  
-  <p>15 files changed, 1133 insertions(+), 234 deletions(-)</p>
-    <p>Det har vært en krevende dag. Mange små feil (overstyring i global CSS, feil med imports, hjertet som ikke ble rosa, og DateTag som ikke ville vise riktig format). Likevel ser jeg at jeg har tatt store steg – jeg har fått bedre kontroll på komponentene og begynt å skjønne hvordan ting henger sammen i Astro.</p>
-  <li><strong>GameCard:</strong> jeg har endelig fått kortene til å se bedre ut. Undertittel har fått mer fokus (sort, mindre font) og meta-tags vises som små chips. Kortene er vertikale på mobil og horisontale på desktop.</li>
-  <li><strong>DateTag:</strong> oppdatert logikken slik at relative datoer gir mening. Nå håndterer den både “i dag”, “i går” og full dato når det trengs.</li>
-  <li><strong>Global CSS:</strong> linjeavstand på H1–H4 har vært vanskelig. Jeg synes overskriftene tok for mye plass. Etter mange forsøk er marginer og line-height strammet inn slik at det føles tettere og renere.</li>
-  <li><strong>[slug].astro:</strong> jeg prøvde å vise både undertittel og publiseringsdato med <code>DateTag</code>. Det var knotete å få riktig data inn som props, men jeg begynner å forstå hvordan <em>Astro.props</em> fungerer.</li>
-  <li><strong>BaseLayout:</strong> jeg sleit med script-plassering og import av <code>menu.js</code>. Fant ut at jeg måtte bruke riktig <code>script is:inline</code> og håndtere eksterne lenker med en sjekk på domenet.</li>
-
-</ul>
-
-  <h3>27. september</h3>
-<ul>
-  <li><strong>Refaktorering av stilark (CSS)</strong><br />
-    Justert grunnstørrelse på tekst med fleksibel funksjon (<em>clamp()</em> → mellom 16px og 20px).  
-    Ryddet opp i overskriftsnivå (H1–H4) og brødtekst.  
-    Gjorde H2 litt mindre (maks 28px) for bedre lesbarhet.  
-    Oppdatert typografi i footer og navigasjon.
-  </li>
-  <li><strong>Brødsmulesti (Breadcrumb)</strong><br />
-    Ny komponent (<code>Breadcrumb.astro</code>) som sporer hvor man er på siden (<em>Astro.url.pathname</em>).  
-    Viser alltid «Forside» først. Viser sidens tittel (<em>frontmatter.title</em>) på spillsider.  
-    Design: diskret (14px), blå lenker, nåværende side i svart.
-  </li>
-  <li><strong>Spillkort (GameCard)</strong><br />
-    Fjernet bilde på kortene (nå tekstbaserte).  
-    Lagt til underoverskrift (subtitle).  
-    Nytt felt <code>intro</code> (kort pitch, maks 255 tegn).  
-    Beholder små “chips” (spillere, tid, vanskelighetsgrad, tagger).
-  </li>
-  <li><strong>Innholdsoppsett</strong><br />
-    Oppdatert <code>config.ts</code> med nytt felt <code>intro</code>.
-  </li>
-  <li><strong>Diverse</strong><br />
-    Rettet type-feil i Breadcrumb (href optional).  
-    Små stiljusteringer i date-tag, chips og hover-effekter.
-  </li>
-  <li><strong>Nye dynamiske spill-sider</strong><br />
-    Opprettet <code>src/pages/spill/[slug].astro</code> med <em>getStaticPaths()</em> som lager én side pr. spill.  
-    Bruker <em>CollectionEntry&lt;"games"&gt;</em> for typing i spill-komponenter.  
-    Metadata vises som chips både på kort og detaljsider.
-  </li>
-</ul>
-
-<h3>18. september</h3>
-<ul>
-  <li><strong>Ny Hero-komponent</strong> (fullbredde seksjon, responsiv, bryter ut av kolonne).</li>
-  <li><strong>Header & Footer</strong> (mindre luft, hjerte øverst til høyre, footer horisontal/vertikal).</li>
-  <li><strong>Typografi</strong> (justerte overskrifter med <em>clamp()</em>, line-height, letter-spacing).</li>
-</ul>
-
-<h3>17. september</h3>
-<ul>
-  <li>Rettet en feil (<code>fix: div</code>).</li>
-</ul>
-
-<h3>7. september</h3>
-<ul>
-  <li><strong>Ny datomerking (DateTag)</strong> (viser “i dag”, “i går”, “for 1 uke siden” osv.).</li>
-  <li><strong>Besøksteller (PageView)</strong> (viser dagens og totalt antall besøk).</li>
-  <li><strong>Tids-teller (Counter)</strong> (viser tid siden startdato, inkl. hundeår, måneturer osv.).</li>
-</ul>
-
-<h3>4. september</h3>
-<ul>
-  <li>Småjusteringer i kildekoden (<code>chore: fixed small src</code>).</li>
-</ul>
-
-<h3>31. august</h3>
-<ul>
-  <li><strong>Rettet feil i blogginnlegg-layout</strong> (sti til <code>MarkdownPostLayout.astro</code>).</li>
-  <li><strong>Navigasjonsmeny</strong> (ny hamburger for mobil, skjuler separatorer, bedre tilgjengelighet).</li>
-  <li><strong>Generell rydding</strong> (redeploys, refaktorering).</li>
-</ul>
-
-<h3>27. august</h3>
-<ul>
-  <li><strong>Typografi</strong> (H1 maks 50px, H2 maks 36px, H3 maks 28px, skalerer med <em>clamp()</em>).</li>
-  <li><strong>BaseLayout</strong> (eksterne lenker åpner i ny fane med sikkerhet).</li>
-  <li><strong>Ryddet global.css</strong> (Times font, oppdatert container og nav).</li>
-</ul>
-
-<h3>26. august</h3>
-<ul>
-  <li><strong>Refaktorering av BaseLayout og navigasjon</strong> (HTML-struktur, header, footer, <em>&lt;slot /&gt;</em> i <em>&lt;main&gt;</em>, unike titler, ryddet props og slots).</li>
-</ul>
-
-<h3>25. august</h3>
-<ul>
-  <li><strong>Ny måler for dataforbruk (PageWeight)</strong> (viser hvor mye data siden laster i KB).</li>
-  <li><strong>Kodeformattering med Prettier</strong>.</li>
-  <li><strong>Rettet filnavn</strong> (<code>Navigation.astro</code> med stor N).</li>
-  <li><strong>CSS og footer</strong> (mer styling og sosiale medier-lenker).</li>
-</ul>
-
-<h3>24. august</h3>
-<ul>
-  <li><strong>Ny bloggpost og sider</strong> (første innlegg, about og blog-sider).</li>
-  <li><strong>Domene og GitHub Actions</strong> (CNAME og deploy workflow).</li>
-  <li><strong>Oppdatert README</strong> (personlig tekst).</li>
-</ul>
-
-<h3>23. august</h3>
-<ul>
-  <li><strong>Starten på prosjektet</strong> (Initial commit fra Astro, første commit i repo).</li>
-</ul>
-
+  </article>
 
 </section>
 <style>
@@ -223,18 +104,6 @@ import PageView from '../components/PageView.astro';
     background: #fffaf0;
   }
 
-  .commit-log h3 {
-    margin-top: 0;
-    color: #d11305;
-  }
-
-  .commit-log h4 {
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
   .commit-log ul {
     margin: 0 0 1.25rem 1.2rem; /* mer luft under hele lista */
     padding: 0;
@@ -243,8 +112,9 @@ import PageView from '../components/PageView.astro';
     gap: 0.5rem; /* gir avstand mellom punkter */
   }
 
-  .commit-log li {
+  .commit-log h4 {
     margin: 0;               /* fjern dobbel margin */
+    color: red;
     line-height: 1.5;        /* litt luftigere */
     font-size: 20px;
   }
