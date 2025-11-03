@@ -1,4 +1,13 @@
 ---
+title: Boms
+date: 2024
+length: "15–30 min"
+topics: "Kortspill, strategi, familie"
+description: "Et klassisk kortspill der du prøver å bli kvitt alle kortene først."
+image: "/images/boms.jpg"
+featured: false
+---
+
 title: "Boms & President"
 subtitle: "Spillet er en god inngang til sosiale kortspill og har noen enkle mekanismer som gir høy gjenspillingsverdi"
 players: "3–5p / ★4p"
@@ -8,7 +17,6 @@ tags: ["kortspill ", "på hytta ", "party"]
 pubDate: "2025-09-28"
 recommendedByMe: true
 intro: "Klarer du å bli ferdig med hånden din først blir du president, da får du flere fordeler i neste spill. Men pass på, de andre spillerne kan bli lei av at du alltid vinner. Klarer du å holde fast i rollen din, eller vil de andre klare å felle deg!"
----
 
 ## Setup
 

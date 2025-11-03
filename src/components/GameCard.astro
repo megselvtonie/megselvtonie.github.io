@@ -1,110 +1,93 @@
 ---
-import type { CollectionEntry } from "astro:content";
-type Game = CollectionEntry<"games">;
-
-const { game } = Astro.props as { game: Game };
-
-const {
-  title,
-  subtitle,
-  players,
-  time,
-  difficulty,
-  tags = [],
-  recommendedByMe,
-  intro, // nytt felt: en liten tekst / innlegg
-} = game.data;
-
-const href = `/spill/${game.id}`;
+/**
+ * Props:
+ * - title: string
+ * - date: string
+ * - length: string (optional)
+ * - topics: string (optional)
+ * - description: string (optional)
+ * - image: string (path til bildet)
+ * - featured: boolean (om kortet skal dekke to kolonner)
+ */
+const { title, date, length, topics, description, image, featured } = Astro.props;
 ---
 
-<article class="game-card">
-  <a href={href} class="card-link">
-    <div class="content">
-      <h2 class="title">{title}</h2>
-      {subtitle && <p class="subtitle">{subtitle}</p>}
-      {intro && <p class="intro">{intro}</p>}
+<article class:list={["game-card", featured && "featured"]}>
+  <div class="image-wrapper">
+    <img src={image} alt={title} loading="lazy" />
+  </div>
 
-      <div class="meta-tags">
-        <span class="chip">{players}</span>
-        <span class="chip">{time}</span>
-        <span class="chip">{difficulty}</span>
-        {recommendedByMe && <span class="chip rec">★ anbefalt</span>}
-        {tags.map((t: string) => (
-          <span class="chip">{t}</span>
-        ))}
-      </div>
-    </div>
-  </a>
+  <div class="meta">
+    <p><strong class="label">Spill</strong> {title}</p>
+    <p><strong class="label">Dato</strong> {date}</p>
+    {length && <p><strong class="label">Lengde</strong> {length}</p>}
+    {topics && (
+      <p><strong class="label">Tag</strong> {topics}</p>
+    )}
+    {description && (
+      <>
+        <p><strong class="label">Beskrivelse</strong></p>
+        <p>{description}</p>
+      </>
+    )}
+  </div>
 </article>
 
 <style>
+/* ------------------------------
+   GRUNNLEGGENDE STIL
+------------------------------ */
 .game-card {
-  border: 1px solid var(--border-color, #000);
-  border-radius: 12px;
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.game-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
 }
 
-.card-link {
-  color: inherit;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
+/* ------------------------------
+   BILDE
+------------------------------ */
+.image-wrapper {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
   height: 100%;
-  padding: 1rem;
+  object-fit: cover;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+/* ------------------------------
+   METADATA (tekstfeltet)
+------------------------------ */
+.meta {
+  padding: 0.5rem 0;
+  font-size: 40px
+  line-height: 1rem;
 }
 
-.title {
-  margin: 0;
-  font-size: 1.3rem; /* ca 20–21px */
-  font-weight: 600;
-  line-height: 1.3;
+/* 🔸 Her kan du justere avstanden mellom linjene i metadataene */
+.meta p {
+  margin: 0 0; /* <-- Øk for mer luft mellom linjene */
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.subtitle {
-  margin: 0;
-  font-size: 1.1rem; /* ca 17–18px */
-  font-weight: 500;
-  color: #000; /* tydelig sort */
+/* 🔸 Denne fargen styrer “Title”, “Date”, osv. */
+.label {
+  color: #d84315;
+  font-family: var(--font-serif, "Times New Roman", serif);
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  min-width: 6ch; /* 🔸 Juster bredden for hvor langt labelen skal strekke seg */
 }
 
-.intro {
-  margin: 0.5rem 0;
-  font-size: 0.95rem; /* ca 15px */
-  line-height: 1.45;
-  color: #333;
-  max-width: 65ch;
-}
-
-.meta-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin-top: 0.5rem;
-}
-
-.chip {
-  border: 1px solid #000;
-  border-radius: 999px;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.8rem;
-  line-height: 1.2;
-  background: #fff;
-}
-.chip.rec {
-  background: #ffeec2;
-  font-weight: 500;
+/* ------------------------------
+   FEATURED-KORT (dekker to kolonner)
+------------------------------ */
+.featured {
+  grid-column: span 2;
 }
 </style>

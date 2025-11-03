@@ -1,15 +1,14 @@
 import { defineCollection, z } from "astro:content";
 
-const spill = defineCollection({
-  type: "content",
+const spillCollection = defineCollection({
   schema: z.object({
     title: z.string(),
-    subtitle: z.string().optional(),
-    players: z.string(),
-    time: z.string(),
-    difficulty: z.enum(["lett", "middels", "avansert"]),
-    tags: z.array(z.string()).optional(),
-    cover: z.string().optional(),
+    date: z.string().optional(),
+    length: z.string().optional(),
+    topics: z.string().optional(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+    featured: z.boolean().optional(),
   }),
 });
 
@@ -25,7 +24,7 @@ const oppskrifter = defineCollection({
   }),
 });
 
-export const collections = { spill, oppskrifter };
+export const collections = { spillCollection, oppskrifter };
 
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
