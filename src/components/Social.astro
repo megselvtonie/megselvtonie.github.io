@@ -9,10 +9,21 @@
  * som sendes inn fra footer.astro
  */
 const { platform, username, compact = false, class: className = "" } = Astro.props;
+
+// Declare href before using it
+let href;
+
+if (platform === "spotify") {
+  href = `https://open.spotify.com/user/t%C3%A5nje?si=15eb54d38c1c4445`;
+} else {
+  href = `https://www.${platform}.com/${username}`;
+}
+
 ---
-<a class={`${compact ? "compact" : ""} ${className}`} href={`https://www.${platform}.com/${username}`}>
+<a class={`${compact ? "compact" : ""} ${className}`} href={href}>
   {platform}
 </a>
+
 
 <style>
   a { padding: 0.5rem 1rem; text-decoration: none; }

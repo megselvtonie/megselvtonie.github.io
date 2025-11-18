@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DateTag from '../components/DateTag.astro';
+import ShortCards from '../components/ShortCards.astro';
+const pageTitle = "megselv→tonie";
+
+import PageView from '../components/PageView.astro';
+---
+  <section class="commit-log">
+  <article>
+    <h1>📜 Endringslogg <DateTag datetime="2025-09-28T11:27" /></h1>
+<h2>Oktober 2025</h2>
+    <h3>6. oktober</h3>
+    <h4>Forbedringer i navigasjon og design</h4>
+    <ul>
+      <li>Ryddet opp i gamle spillfiler og lagt til plass for nye spill.</li>
+      <li>Oppdatert navigasjonen slik at den viser riktig sti til sidene.</li>
+      <li>Gjort footeren penere og mer oversiktlig.</li>
+      <li>Rettet små skrivefeil og forbedret lesbarheten i tekstene.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>29. september – 1. oktober</h3>
+    <h4>Oppdateringer i spill og typografi</h4>
+    <ul>
+      <li>Spillkortene er nå bedre tilpasset både mobil og desktop.</li>
+      <li>Spillsidene viser nyttig informasjon som antall spillere og vanskelighetsgrad.</li>
+      <li>Forbedret overskrifter og mellomrom i tekstene for bedre lesbarhet.</li>
+      <li>Oppdatert datomerking slik at den viser datoer på en mer forståelig måte.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h2>September 2025</h2>
+
+    <section>
+      <h3>28. september</h3>
+      <h4>Forbedringer i spillkort og navigasjon</h4>
+      <ul>
+        <li>Spillkortene har fått et nytt design som fungerer bedre på ulike skjermstørrelser.</li>
+        <li>Oppdatert navigasjonen slik at det er enklere å finne frem.</li>
+        <li>Gjort små justeringer i tekststørrelse og mellomrom for bedre lesbarhet.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>27. september</h3>
+      <h4>Oppdateringer i design og struktur</h4>
+      <ul>
+        <li>Forbedret tekststørrelse og mellomrom i hele nettsiden.</li>
+        <li>Lagt til en ny komponent som viser hvor på nettsiden du er.</li>
+        <li>Oppdatert spillkortene med mer informasjon og bedre layout.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>18. september</h3>
+      <h4>Ny hero-seksjon og forbedret typografi</h4>
+      <ul>
+        <li>Lagt til en ny seksjon øverst på siden som fanger oppmerksomheten.</li>
+        <li>Gjort overskrifter og tekst mer lesbare med bedre mellomrom og størrelse.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>7. september</h3>
+      <h4>Ny datomerking og besøksteller</h4>
+      <ul>
+        <li>Oppdatert datomerking slik at den viser «i dag», «i går» eller datoer på en enkel måte.</li>
+        <li>Lagt til en teller som viser hvor mange som har besøkt nettsiden.</li>
+      </ul>
+    </section>
+  </article>
+
+  <article>
+    <h2>August 2025</h2>
+    <h3>23. august</h3>
+    <h4>Starten på prosjektet</h4>
+    <ul>
+      <li>Første versjon av nettsiden ble laget.</li>
+    </ul>
+  </article>
+
+</section>
+<style>
+  .commit-log {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 0.5rem;
+    background: #fffaf0;
+  }
+
+  .commit-log ul {
+    margin: 0 0 1.25rem 1.2rem; /* mer luft under hele lista */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* gir avstand mellom punkter */
+  }
+
+  .commit-log h4 {
+    margin: 0;               /* fjern dobbel margin */
+    color: red;
+    line-height: 1.5;        /* litt luftigere */
+    font-size: 20px;
+  }
+</style>
